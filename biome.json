@@ -22,8 +22,15 @@
       "!**/.source"
     ]
   },
-  "extends": [
-    "ultracite/core",
-    "ultracite/react"
-  ]
+  "linter": {
+    "rules": {
+      "style": {
+        "useConsistentTypeDefinitions": "off"
+      },
+      "performance": {
+        "noBarrelFile": "info"
+      }
+    }
+  },
+  "extends": ["ultracite/core", "ultracite/react"]
 }
