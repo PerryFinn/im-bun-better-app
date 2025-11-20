@@ -45,7 +45,7 @@ function RootComponent() {
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
-        disableTransitionOnChange
+        // disableTransitionOnChange
         enableSystem
         storageKey="vite-ui-theme"
       >
