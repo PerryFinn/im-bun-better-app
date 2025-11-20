@@ -29,6 +29,9 @@
       },
       "performance": {
         "noBarrelFile": "info"
+      },
+      "correctness": {
+        "noUnusedFunctionParameters": "off"
       }
     }
   },
