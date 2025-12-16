@@ -117,7 +117,7 @@
         "@im-debug-better-app/config": "workspace:*",
       },
       "peerDependencies": {
-        "typescript": "^5",
+        "typescript": "catalog:",
       },
     },
     "packages/config": {

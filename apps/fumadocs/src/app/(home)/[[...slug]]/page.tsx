@@ -35,7 +35,7 @@ export default async function Page(props: PageProps<"/[[...slug]]">) {
   );
 }
 
-export function generateStaticParams() {
+export function generateStaticParams(params: { slug: string[] }) {
   return source.generateParams();
 }
 

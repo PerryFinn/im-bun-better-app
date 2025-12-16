@@ -33,7 +33,6 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "check-types": "turbo check-types",
-    "dev:native": "turbo -F native dev",
     "dev:web": "turbo -F web dev",
     "dev:server": "turbo -F server dev",
     "db:push": "turbo -F @im-debug-better-app/db db:push",
