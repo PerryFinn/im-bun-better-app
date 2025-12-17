@@ -8,15 +8,23 @@ import { Elysia } from "elysia";
 import getPort from "get-port";
 import webHTML from "../../web/dist/index.html";
 
-const port = await getPort({ host: "localhost", port: 12_306 });
+const preferredHost = process.env.HOST || "localhost";
+const preferredPort = 12_306;
+
+const host = process.env.HOST || "localhost";
+const port = await getPort({ host, port: preferredPort });
+
+if (preferredPort !== port) {
+  console.warn(`端口【${preferredPort}】被占用，使用端口【${port}】代替`);
+}
 
 let isClosing = false;
 
-const app = new Elysia()
+const app = new Elysia({ serve: { hostname: preferredHost } })
   .use(openapi())
   .use(
     cors({
-      origin: process.env.CORS_ORIGIN || "",
+      origin: process.env.CORS_ORIGIN || "*",
       methods: ["GET", "POST", "OPTIONS"],
     })
   )
@@ -38,6 +46,9 @@ const app = new Elysia()
       description: "对操作行为的详细说明。",
       deprecated: true,
     },
+  })
+  .get("/who", () => `pid=${process.pid}`, {
+    detail: { hide: true },
   })
   .listen(port, (server) => {
     console.log(
