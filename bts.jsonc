@@ -12,6 +12,7 @@
   "frontend": [
     "tanstack-router"
   ],
+  "payments": "none",
   "addons": [
     "biome",
     "husky",
