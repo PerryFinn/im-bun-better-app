@@ -28,6 +28,7 @@
         "@trpc/server": "catalog:",
         "dotenv": "catalog:",
         "elysia": "catalog:",
+        "get-port": "^7.1.0",
         "zod": "catalog:",
       },
       "devDependencies": {
@@ -790,6 +791,8 @@
     "get-east-asian-width": ["get-east-asian-width@1.4.0", "https://registry.npmmirror.com/get-east-asian-width/-/get-east-asian-width-1.4.0.tgz", {}, "sha512-QZjmEOC+IT1uk6Rx0sX22V6uHWVwbdbxf1faPqJ1QhLdGgsRGCZoyaQBm/piRdJy/D2um6hM1UP7ZEeQ4EkP+Q=="],
 
     "get-nonce": ["get-nonce@1.0.1", "https://registry.npmmirror.com/get-nonce/-/get-nonce-1.0.1.tgz", {}, "sha512-FJhYRoDaiatfEkUK8HKlicmu/3SGFD51q3itKDGoSTysQJBnfOcxU5GxnhE1E6soB76MbT0MBtnKJuXyAx+96Q=="],
+
+    "get-port": ["get-port@7.1.0", "https://registry.npmmirror.com/get-port/-/get-port-7.1.0.tgz", {}, "sha512-QB9NKEeDg3xxVwCCwJQ9+xycaz6pBB6iQ76wiWMl1927n0Kir6alPiP+yuiICLLU4jpMe08dXfpebuQppFA2zw=="],
 
     "get-tsconfig": ["get-tsconfig@4.13.0", "https://registry.npmmirror.com/get-tsconfig/-/get-tsconfig-4.13.0.tgz", { "dependencies": { "resolve-pkg-maps": "^1.0.0" } }, "sha512-1VKTZJCwBrvbd+Wn3AOgQP/2Av+TfTCOlE4AcRJE72W1ksZXbAx8PPBR9RzgTeSPzlPMHrbANMH3LbltH73wxQ=="],
 
