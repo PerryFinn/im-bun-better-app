@@ -20,7 +20,9 @@ const app = new Elysia()
       methods: ["GET", "POST", "OPTIONS"],
     })
   )
-  .get("/", webHTML)
+  .get("/", webHTML, {
+    detail: { hide: true },
+  })
   .all("/trpc/*", async (context) => {
     const res = await fetchRequestHandler({
       endpoint: "/trpc",

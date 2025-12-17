@@ -1,6 +1,6 @@
-import { SQL } from "bun";
-import { drizzle } from "drizzle-orm/bun-sql";
+import { drizzle } from "drizzle-orm/bun-sqlite";
 
-const client = new SQL(process.env.DATABASE_URL || "");
-
-export const db = drizzle({ client });
+// You can specify any property from the bun:sql connection options
+export const db = drizzle({
+  connection: { source: process.env.DATABASE_URL || "" },
+});
