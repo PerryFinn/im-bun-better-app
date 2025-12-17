@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "typescript": "catalog:",
-    "@types/bun": "^1.2.6",
+    "@types/bun": "catalog:",
     "tsdown": "^0.16.5",
     "@im-debug-better-app/config": "workspace:*"
   }
