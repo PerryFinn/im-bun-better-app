@@ -6,6 +6,7 @@ import { appRouter } from "@im-debug-better-app/api/routers/index";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { Elysia } from "elysia";
 import getPort from "get-port";
+import webHTML from "../../web/dist/index.html";
 
 const port = await getPort({ host: "localhost", port: 12_306 });
 
@@ -19,6 +20,7 @@ const app = new Elysia()
       methods: ["GET", "POST", "OPTIONS"],
     })
   )
+  .get("/", webHTML)
   .all("/trpc/*", async (context) => {
     const res = await fetchRequestHandler({
       endpoint: "/trpc",
@@ -28,7 +30,7 @@ const app = new Elysia()
     });
     return res;
   })
-  .get("/", () => "OK", {
+  .get("/demo", () => "OK", {
     detail: {
       summary: "这是操作功能的简短摘要。",
       description: "对操作行为的详细说明。",

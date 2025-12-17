@@ -17,8 +17,6 @@
       "react": "19.2.3",
       "react-dom": "19.2.3",
       "@trpc/client": "^11.5.0",
-      "@libsql/client": "^0.14.0",
-      "libsql": "^0.5.22",
       "@types/node": "^22.13.13",
       "@types/react": "~19.2.7",
       "@types/react-dom": "^19.2.3",
