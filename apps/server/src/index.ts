@@ -27,8 +27,10 @@ const app = new Elysia()
     return res;
   })
   .get("/", () => "OK")
-  .listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+  .listen(port, (server) => {
+    console.log(
+      `Server is running on http://${server?.hostname}:${server?.port}`
+    );
   });
 
 const shutdown = async (signal: string) => {
