@@ -5,12 +5,14 @@
     "": {
       "name": "im-debug-better-app",
       "dependencies": {
-        "dotenv": "^17.2.2",
-        "elysia": "^1.4.19",
-        "zod": "^4.1.11",
+        "dotenv": "catalog:",
+        "elysia": "catalog:",
+        "pathe": "^2.0.3",
+        "zod": "catalog:",
       },
       "devDependencies": {
         "@biomejs/biome": "2.3.9",
+        "@types/bun": "catalog:",
         "husky": "^9.1.7",
         "lint-staged": "^16.1.2",
         "turbo": "^2.6.3",
@@ -33,7 +35,6 @@
       },
       "devDependencies": {
         "@im-debug-better-app/config": "workspace:*",
-        "@types/bun": "catalog:",
         "tsdown": "^0.16.5",
         "typescript": "catalog:",
       },
@@ -111,14 +112,14 @@
         "drizzle-kit": "^0.31.2",
       },
       "peerDependencies": {
-        "typescript": "^5",
+        "typescript": "catalog:",
       },
     },
   },
   "catalog": {
     "@trpc/client": "^11.5.0",
     "@trpc/server": "^11.5.0",
-    "@types/bun": "^1.3.4",
+    "@types/bun": "^1.3.5",
     "@types/node": "^22.13.13",
     "@types/react": "~19.2.7",
     "@types/react-dom": "^19.2.3",
@@ -634,7 +635,7 @@
 
     "@types/babel__traverse": ["@types/babel__traverse@7.28.0", "https://registry.npmmirror.com/@types/babel__traverse/-/babel__traverse-7.28.0.tgz", { "dependencies": { "@babel/types": "^7.28.2" } }, "sha512-8PvcXf70gTDZBgt9ptxJ8elBeBjcLOAcOtoO/mPJjtji1+CdGbHgm77om1GrsPxsiE+uXIpNSK64UYaIwQXd4Q=="],
 
-    "@types/bun": ["@types/bun@1.3.4", "https://registry.npmmirror.com/@types/bun/-/bun-1.3.4.tgz", { "dependencies": { "bun-types": "1.3.4" } }, "sha512-EEPTKXHP+zKGPkhRLv+HI0UEX8/o+65hqARxLy8Ov5rIxMBPNTjeZww00CIihrIQGEQBYg+0roO5qOnS/7boGA=="],
+    "@types/bun": ["@types/bun@1.3.5", "https://registry.npmmirror.com/@types/bun/-/bun-1.3.5.tgz", { "dependencies": { "bun-types": "1.3.5" } }, "sha512-RnygCqNrd3srIPEWBd5LFeUYG7plCoH2Yw9WaZGyNmdTEei+gWaHqydbaIRkIkcbXwhBT94q78QljxN0Sk838w=="],
 
     "@types/estree": ["@types/estree@1.0.8", "https://registry.npmmirror.com/@types/estree/-/estree-1.0.8.tgz", {}, "sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w=="],
 
@@ -680,7 +681,7 @@
 
     "buffer-from": ["buffer-from@1.1.2", "https://registry.npmmirror.com/buffer-from/-/buffer-from-1.1.2.tgz", {}, "sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ=="],
 
-    "bun-types": ["bun-types@1.3.4", "https://registry.npmmirror.com/bun-types/-/bun-types-1.3.4.tgz", { "dependencies": { "@types/node": "*" } }, "sha512-5ua817+BZPZOlNaRgGBpZJOSAQ9RQ17pkwPD0yR7CfJg+r8DgIILByFifDTa+IPDDxzf5VNhtNlcKqFzDgJvlQ=="],
+    "bun-types": ["bun-types@1.3.5", "https://registry.npmmirror.com/bun-types/-/bun-types-1.3.5.tgz", { "dependencies": { "@types/node": "*" } }, "sha512-inmAYe2PFLs0SUbFOWSVD24sg1jFlMPxOjOSSCYqUgn4Hsc3rDc7dFvfVYjFPNHtov6kgUeulV4SxbuIV/stPw=="],
 
     "cac": ["cac@6.7.14", "https://registry.npmmirror.com/cac/-/cac-6.7.14.tgz", {}, "sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ=="],
 
