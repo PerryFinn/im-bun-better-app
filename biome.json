@@ -31,7 +31,8 @@
         "noBarrelFile": "info"
       },
       "correctness": {
-        "noUnusedFunctionParameters": "off"
+        "noUnusedFunctionParameters": "off",
+        "noUnusedVariables": "warn"
       },
       "complexity": {
         "noVoid": "off"

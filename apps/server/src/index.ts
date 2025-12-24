@@ -8,6 +8,17 @@ import { Elysia } from "elysia";
 import getPort from "get-port";
 import webHTML from "../../web/dist/index.html";
 
+const acceptsHtml = (request: Request): boolean => {
+  const accept = request.headers.get("accept");
+  if (!accept) {
+    return false;
+  }
+
+  return (
+    accept.includes("text/html") || accept.includes("application/xhtml+xml")
+  );
+};
+
 const preferredHost = process.env.HOST || "localhost";
 const preferredPort = 12_306;
 
@@ -50,6 +61,22 @@ const app = new Elysia({ serve: { hostname: preferredHost } })
   .get("/who", () => `pid=${process.pid}`, {
     detail: { hide: true },
   })
+  .all(
+    "/*",
+    ({ request }) => {
+      const isHtmlRequest = acceptsHtml(request);
+      const isPageRequest =
+        request.method === "GET" || request.method === "HEAD";
+      if (!(isHtmlRequest && isPageRequest)) {
+        return new Response("Not Found", { status: 404 });
+      }
+
+      return webHTML;
+    },
+    {
+      detail: { hide: true },
+    }
+  )
   .listen(port, (server) => {
     console.log(
       `Server is running on http://${server?.hostname}:${server?.port}`
@@ -68,9 +95,5 @@ const shutdown = async (signal: string) => {
 
 process.on("SIGINT", () => shutdown("SIGINT"));
 process.on("SIGTERM", () => shutdown("SIGTERM"));
-
-console.log("process.execPath :>> ", process.execPath);
-console.log("import.meta.dir :>> ", import.meta.dir);
-console.log("process.cwd() :>> ", process.cwd());
 
 export type ServerApp = typeof app;

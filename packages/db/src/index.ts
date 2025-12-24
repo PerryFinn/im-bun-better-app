@@ -34,11 +34,10 @@ export const initDb = () => {
 
   initPromise = (async () => {
     const dbPath = getDbPath();
-    console.log("dbPath :>> ", dbPath);
     await mkdir(dirname(dbPath), { recursive: true });
 
     const sqliteClient = new Database(dbPath, { create: true });
-    const db = drizzle(sqliteClient); // Bun 官方示例写法 :contentReference[oaicite:5]{index=5}
+    const db = drizzle(sqliteClient);
 
     const { found, candidates } = resolveMigrationsFolder();
     const skip = process.env.SKIP_DB_MIGRATIONS === "1";
