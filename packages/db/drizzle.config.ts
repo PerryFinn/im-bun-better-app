@@ -7,7 +7,7 @@ dotenv.config({
 
 export default defineConfig({
   schema: "./src/schema",
-  out: "./drizzle",
+  out: "./db-migrations",
   dialect: "sqlite",
   dbCredentials: {
     url: process.env.DB_FILE_NAME || "local.db",

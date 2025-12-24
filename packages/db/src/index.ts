@@ -1,33 +1,55 @@
 import { Database } from "bun:sqlite";
+import { existsSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
+import { dirname, join } from "node:path";
 import { drizzle } from "drizzle-orm/bun-sqlite";
 import { migrate } from "drizzle-orm/bun-sqlite/migrator";
-import { dirname, resolve } from "pathe";
+import { resolve } from "pathe";
 
 let initPromise: Promise<ReturnType<typeof drizzle>> | null = null;
 
-const getDbPath = (): string => resolve(process.env.DB_FILE_NAME ?? "local.db");
+const getDbPath = () => resolve(process.env.DB_FILE_NAME ?? "local.db");
 
-const ensureParentDirectory = async (filePath: string) =>
-  mkdir(dirname(filePath), { recursive: true });
+function resolveMigrationsFolder() {
+  // ✅ 路线 A：zip 发布（可执行文件同级 db-migrations/）
+  const byExec = join(dirname(process.execPath), "db-migrations");
+  // ✅ 开发态：db/src -> db/db-migrations
+  const bySource = resolve(import.meta.dir, "..", "db-migrations");
 
-export const initDb = (): Promise<ReturnType<typeof drizzle>> => {
+  const candidates = [byExec, bySource];
+  const found = candidates.find((p) =>
+    existsSync(join(p, "meta", "_journal.json"))
+  );
+  return { found, candidates };
+}
+
+export const initDb = () => {
   if (initPromise) {
     return initPromise;
   }
 
   initPromise = (async () => {
     const dbPath = getDbPath();
-    await ensureParentDirectory(dbPath);
+    await mkdir(dirname(dbPath), { recursive: true });
 
     const sqliteClient = new Database(dbPath, { create: true });
-    const drizzleDb = drizzle(sqliteClient);
+    const db = drizzle(sqliteClient); // Bun 官方示例写法 :contentReference[oaicite:5]{index=5}
 
-    const migrationsFolder = resolve("./drizzle");
-    await mkdir(migrationsFolder, { recursive: true });
-    await migrate(drizzleDb, { migrationsFolder });
+    const { found, candidates } = resolveMigrationsFolder();
+    const skip = process.env.SKIP_DB_MIGRATIONS === "1";
 
-    return drizzleDb;
+    if (!found) {
+      if (skip) {
+        return db;
+      }
+      throw new Error(
+        "找不到数据库迁移目录（需要包含 db-migrations/meta/_journal.json）。\n" +
+          `尝试过的路径：\n${candidates.map((p) => `- ${p}`).join("\n")}`
+      );
+    }
+
+    migrate(db, { migrationsFolder: found });
+    return db;
   })();
 
   return initPromise;

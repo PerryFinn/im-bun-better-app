@@ -18,7 +18,8 @@
       "!**/.alchemy",
       "!**/.svelte-kit",
       "!**/wrangler.jsonc",
-      "!**/.source"
+      "!**/.source",
+      "!packages/db/db-migrations"
     ]
   },
   "linter": {

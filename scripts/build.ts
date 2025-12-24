@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-import { mkdir } from "node:fs/promises";
+import { cp, mkdir, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import Bun from "bun";
 import { dirname, resolve } from "pathe";
@@ -82,4 +82,32 @@ async function build() {
   }
 }
 
-await build();
+async function copyDbMigrations() {
+  log(BLUE, "复制 db-migrations 目录...");
+  const dbMigrationsDir = resolve(
+    SCRIPT_DIR,
+    "..",
+    "packages",
+    "db",
+    "db-migrations"
+  );
+  const outDbMigrationsDir = resolve(OUTDIR, "db-migrations");
+  await mkdir(outDbMigrationsDir, { recursive: true });
+  await cp(dbMigrationsDir, outDbMigrationsDir, { recursive: true });
+}
+
+async function cleanDist() {
+  log(GREEN, "清理 dist 目录...");
+  await rm(OUTDIR, { recursive: true, force: true });
+}
+
+async function main() {
+  // 1. 清理 dist 目录
+  await cleanDist();
+  // 2. 复制 db-migrations 目录
+  await copyDbMigrations();
+  // 3. 构建
+  await build();
+}
+
+main();

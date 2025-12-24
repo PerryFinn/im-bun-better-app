@@ -69,4 +69,8 @@ const shutdown = async (signal: string) => {
 process.on("SIGINT", () => shutdown("SIGINT"));
 process.on("SIGTERM", () => shutdown("SIGTERM"));
 
+console.log("process.execPath :>> ", process.execPath);
+console.log("import.meta.dir :>> ", import.meta.dir);
+console.log("process.cwd() :>> ", process.cwd());
+
 export type ServerApp = typeof app;
