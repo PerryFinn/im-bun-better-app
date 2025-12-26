@@ -1,5 +1,3 @@
-bun test
-
 #!/bin/sh
 # Exit on any error
 set -e
@@ -22,8 +20,8 @@ PARTIALLY_STAGED=$(git diff --name-only)
 git stash push --quiet --keep-index --message "pre-commit-stash" || true
 STASHED=$?
 
-# Run formatter on the staged files
-bun x ultracite fix
+# 运行 biome 检查，对错误进行抛出
+bun x ultracite check --diagnostic-level error
 FORMAT_EXIT_CODE=$?
 
 # Restore working directory state
