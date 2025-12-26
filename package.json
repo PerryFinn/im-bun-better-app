@@ -32,7 +32,7 @@
     "prepare": "husky",
     "dev": "turbo dev",
     "build": "turbo build",
-    "build:bun": "bun run ./scripts/build.ts",
+    "build:bun": "NODE_ENV=production bun run ./scripts/build.ts",
     "check-types": "turbo check-types",
     "dev:web": "turbo -F web dev",
     "dev:server": "turbo -F server dev",

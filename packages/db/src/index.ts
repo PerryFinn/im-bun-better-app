@@ -8,6 +8,7 @@ import { DEFAULT_DB_FILE_NAME, DEFAULT_DB_MIGRATIONS_DIR } from "./constants";
 
 let initPromise: Promise<ReturnType<typeof drizzle>> | null = null;
 
+// 由 apps/server 应用执行，所以 process.env 取的是 server 应用的 .env 文件
 const getDbPath = () =>
   resolve(
     process.env.DB_FILE_NAME ??
@@ -21,6 +22,11 @@ function resolveMigrationsFolder() {
   const bySource = resolve(import.meta.dir, "..", DEFAULT_DB_MIGRATIONS_DIR);
 
   const candidates = [byExec, bySource];
+
+  console.log("process.execPath :>> ", process.execPath);
+  console.log("process.env.DB_FILE_NAME :>> ", process.env.DB_FILE_NAME);
+  console.log("candidates :>> ", candidates);
+
   const found = candidates.find((p) =>
     existsSync(join(p, "meta", "_journal.json"))
   );
@@ -34,6 +40,7 @@ export const initDb = () => {
 
   initPromise = (async () => {
     const dbPath = getDbPath();
+    console.log("dbPath :>> ", dbPath);
     await mkdir(dirname(dbPath), { recursive: true });
 
     const sqliteClient = new Database(dbPath, { create: true });
