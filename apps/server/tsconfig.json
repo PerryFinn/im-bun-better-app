@@ -9,5 +9,9 @@
     },
     "jsx": "react-jsx",
     "strictNullChecks": true
-  }
+  },
+  "include": [
+    "src/**/*",
+    "package.json" // 显式包含 package.json
+  ]
 }

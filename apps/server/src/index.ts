@@ -3,10 +3,32 @@ import { cors } from "@elysiajs/cors";
 import { openapi } from "@elysiajs/openapi";
 import { createContext } from "@im-debug-better-app/api/context";
 import { appRouter } from "@im-debug-better-app/api/routers/index";
+import { configure, getConsoleSink } from "@logtape/logtape";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { Elysia } from "elysia";
 import getPort from "get-port";
 import webHTML from "../../web/dist/index.html";
+import { name as pkgName } from "../package.json";
+
+await configure({
+  sinks: {
+    console: getConsoleSink(),
+  },
+  loggers: [
+    {
+      category: [pkgName],
+      lowestLevel: process.env.NODE_ENV === "development" ? "trace" : "info",
+      sinks: ["console"],
+    },
+    {
+      category: [pkgName, "database"],
+      lowestLevel: process.env.NODE_ENV === "development" ? "trace" : null, // 生产环境不记录数据库日志
+      sinks: ["console"],
+    },
+  ],
+});
+
+console.log("process.env.NODE_ENV ", process.env.NODE_ENV);
 
 const acceptsHtml = (request: Request): boolean => {
   const accept = request.headers.get("accept");
