@@ -25,12 +25,15 @@ const targets = [
     label: "macOS (Apple Silicon, arm64)",
     compile: {
       target: "bun-darwin-arm64",
-      outfile: `${OUTPUT_BASENAME}-arm64`,
+      outfile: `${OUTPUT_BASENAME}-arm64-[Apple Silicon]`,
     },
   },
   {
     label: "macOS (Intel, x64)",
-    compile: { target: "bun-darwin-x64", outfile: `${OUTPUT_BASENAME}-x64` },
+    compile: {
+      target: "bun-darwin-x64",
+      outfile: `${OUTPUT_BASENAME}-x64-[Intel]`,
+    },
   },
   {
     label: "Windows (x64)",
