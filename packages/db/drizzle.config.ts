@@ -12,7 +12,7 @@ const currentFileDir = dirname(fileURLToPath(import.meta.url));
 
 const projectRoot = resolve(currentFileDir, "..", "..");
 
-const devDBPath = join(projectRoot, "app", "server", DEFAULT_DB_FILE_NAME);
+const devDBPath = join(projectRoot, "apps", "server", DEFAULT_DB_FILE_NAME);
 
 export default defineConfig({
   schema: "./src/schema",
