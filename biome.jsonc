@@ -39,5 +39,9 @@
       }
     }
   },
-  "extends": ["ultracite/core", "ultracite/react"]
+  "extends": [
+    "ultracite/biome/core",
+    "ultracite/biome/react",
+    "ultracite/biome/next"
+  ]
 }
