@@ -17,10 +17,15 @@
 - `bun run dev`：通过 Turbo 同时启动所有应用的开发模式。
 - `bun run dev:web` / `bun run dev:server`：仅启动前端或后端。
 - `bun run build`：构建所有工作区。
+- `bun run verify`：执行一键校验（等价于 `bun run check && bun run check:types`）。
 - `bun run check:types`：执行全仓库 TypeScript 类型检查。
 - `bun run check`：执行 Ultracite/Biome 格式化与 lint 修复。
 - `bun run db:push|db:generate|db:migrate|db:studio`：执行 `@im-debug-better-app/db` 的 Drizzle 数据库流程。
 - `cd apps/server && bun test`：运行 Bun 测试（当前测试位于 `apps/server/tests`）。
+
+## 任务完成的定义
+
+在完成代码变更（新增/修改/重构等）后，无需运行 `bun dev`，但**必须**运行 `bun run verify` 确保代码质量与规范，如果有错误信息，尝试进行修复，修复后重新运行 `bun run verify`。
 
 ## 代码风格与命名规范
 
@@ -41,7 +46,7 @@
 
 - 提交信息遵循 Conventional Commits：`feat: ...`、`fix: ...`、`chore: ...`、`refactor: ...`（仓库历史中中英文均可）。
 - 提交应小而聚焦，避免将重构与功能改动混在同一个提交。
-- 提交 PR 前请至少运行：`bun run check`、`bun run check:types`。
+- 提交 PR 前请至少运行：`bun run verify`（内部包含 `bun run check` 与 `bun run check:types`）。
 - PR 描述需包含：变更目的、影响路径、测试步骤/结果、关联 Issue（如有）、UI 变更截图（如适用）。
 
 ## 安全与配置建议

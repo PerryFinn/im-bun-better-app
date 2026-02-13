@@ -30,11 +30,12 @@
   "scripts": {
     "check": "ultracite check",
     "fix": "ultracite fix",
+    "check:types": "turbo check:types",
+    "verify": "bun run check",
     "prepare": "husky",
     "dev": "turbo dev",
     "build": "turbo build",
     "build:bun": "NODE_ENV=production bun run ./scripts/build.ts",
-    "check:types": "turbo check:types",
     "dev:web": "turbo -F web dev",
     "dev:server": "turbo -F server dev",
     "db:push": "turbo -F @im-debug-better-app/db db:push",
