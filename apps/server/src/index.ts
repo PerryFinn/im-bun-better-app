@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { cors } from "@elysiajs/cors";
 import { openapi } from "@elysiajs/openapi";
+import { serverTiming } from "@elysiajs/server-timing";
 import { createApiApp } from "@im-debug-better-app/api";
 import { configure, getConsoleSink } from "@logtape/logtape";
 import { Elysia } from "elysia";
@@ -52,6 +53,7 @@ if (preferredPort !== port) {
 let isClosing = false;
 
 const app = new Elysia({ serve: { hostname: preferredHost } })
+  .use(serverTiming({ enabled: process.env.NODE_ENV === "development" }))
   .use(openapi())
   .use(
     cors({

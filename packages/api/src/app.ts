@@ -9,7 +9,9 @@ import {
 export const createApiApp = () =>
   new Elysia({ prefix: "/api" })
     .get("/health", () => "OK")
-    .get("/todos", async () => await getAllTodos())
+    .get("/todos", async function getAllTodosHandler() {
+      return await getAllTodos();
+    })
     .post("/todos", async ({ body }) => await createTodo(body.text), {
       body: t.Object({
         text: t.String({ minLength: 1 }),
