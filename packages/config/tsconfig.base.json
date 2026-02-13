@@ -18,6 +18,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "types": ["bun"],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+
+    "incremental": true,
+    "tsBuildInfoFile": "./.tsbuildinfo/tsconfig.tsbuildinfo"
   }
 }

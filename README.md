@@ -64,7 +64,7 @@ im-debug-better-app/
 - `bun run build`: Build all applications
 - `bun run dev:web`: Start only the web application
 - `bun run dev:server`: Start only the server
-- `bun run check-types`: Check TypeScript types across all apps
+- `bun run check:types`: Check TypeScript types across all apps
 - `bun run db:push`: Push schema changes to database
 - `bun run db:studio`: Open database studio UI
 - `cd apps/server && bun run db:local`: Start the local SQLite database

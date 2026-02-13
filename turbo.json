@@ -7,8 +7,12 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**"]
     },
-    "check-types": {
-      "dependsOn": ["^check-types"]
+    "check:types": {
+      "dependsOn": ["^check:types"]
+    },
+    "//#check": {},
+    "//#fix": {
+      "cache": false
     },
     "dev": {
       "cache": false,
