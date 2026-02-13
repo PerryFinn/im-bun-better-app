@@ -8,6 +8,9 @@ import { Elysia } from "elysia";
 import getPort from "get-port";
 import webHTML from "../../web/dist/index.html";
 import { name as pkgName } from "../package.json";
+import { appLogger } from "./utils/logger";
+
+const isDevelopment = process.env.NODE_ENV === "development";
 
 await configure({
   sinks: {
@@ -16,18 +19,16 @@ await configure({
   loggers: [
     {
       category: [pkgName],
-      lowestLevel: process.env.NODE_ENV === "development" ? "trace" : "info",
+      lowestLevel: isDevelopment ? "trace" : "info",
       sinks: ["console"],
     },
     {
       category: [pkgName, "database"],
-      lowestLevel: process.env.NODE_ENV === "development" ? "trace" : null, // 生产环境不记录数据库日志
+      lowestLevel: isDevelopment ? "trace" : null, // 生产环境不记录数据库日志
       sinks: ["console"],
     },
   ],
 });
-
-console.log("process.env.NODE_ENV ", process.env.NODE_ENV);
 
 const acceptsHtml = (request: Request): boolean => {
   const accept = request.headers.get("accept");
@@ -52,8 +53,15 @@ if (preferredPort !== port) {
 
 let isClosing = false;
 
+if (isDevelopment) {
+  appLogger.debug(
+    "OpenAPI Docs is ready on http://{preferredHost}:{port}/openapi",
+    { preferredHost, port }
+  );
+}
+
 const app = new Elysia({ serve: { hostname: preferredHost } })
-  .use(serverTiming({ enabled: process.env.NODE_ENV === "development" }))
+  .use(serverTiming({ enabled: isDevelopment }))
   .use(openapi())
   .use(
     cors({

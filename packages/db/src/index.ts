@@ -23,7 +23,7 @@ function resolveMigrationsFolder() {
 
   const candidates = [byExec, bySource];
 
-  console.log("process.execPath :>> ", process.execPath);
+  console.debug("process.execPath :>> ", process.execPath);
   console.log("process.env.DB_FILE_NAME :>> ", process.env.DB_FILE_NAME);
   console.log("candidates :>> ", candidates);
 
