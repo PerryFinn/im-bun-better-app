@@ -12,7 +12,12 @@ import {
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { trpc } from "@/utils/trpc";
+import {
+  createTodoMutationFn,
+  deleteTodoMutationFn,
+  todosQueryOptions,
+  toggleTodoMutationFn,
+} from "@/utils/api-query";
 
 export const Route = createFileRoute("/todos")({
   component: TodosRoute,
@@ -21,29 +26,26 @@ export const Route = createFileRoute("/todos")({
 function TodosRoute() {
   const [newTodoText, setNewTodoText] = useState("");
 
-  const todos = useQuery(trpc.todo.getAll.queryOptions());
-  const createMutation = useMutation(
-    trpc.todo.create.mutationOptions({
-      onSuccess: () => {
-        todos.refetch();
-        setNewTodoText("");
-      },
-    })
-  );
-  const toggleMutation = useMutation(
-    trpc.todo.toggle.mutationOptions({
-      onSuccess: () => {
-        todos.refetch();
-      },
-    })
-  );
-  const deleteMutation = useMutation(
-    trpc.todo.delete.mutationOptions({
-      onSuccess: () => {
-        todos.refetch();
-      },
-    })
-  );
+  const todos = useQuery(todosQueryOptions());
+  const createMutation = useMutation({
+    mutationFn: createTodoMutationFn,
+    onSuccess: () => {
+      void todos.refetch();
+      setNewTodoText("");
+    },
+  });
+  const toggleMutation = useMutation({
+    mutationFn: toggleTodoMutationFn,
+    onSuccess: () => {
+      void todos.refetch();
+    },
+  });
+  const deleteMutation = useMutation({
+    mutationFn: deleteTodoMutationFn,
+    onSuccess: () => {
+      void todos.refetch();
+    },
+  });
 
   const handleAddTodo = (e: React.FormEvent) => {
     e.preventDefault();

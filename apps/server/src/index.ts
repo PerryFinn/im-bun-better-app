@@ -1,10 +1,8 @@
 import "dotenv/config";
 import { cors } from "@elysiajs/cors";
 import { openapi } from "@elysiajs/openapi";
-import { createContext } from "@im-debug-better-app/api/context";
-import { appRouter } from "@im-debug-better-app/api/routers/index";
+import { createApiApp } from "@im-debug-better-app/api";
 import { configure, getConsoleSink } from "@logtape/logtape";
-import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { Elysia } from "elysia";
 import getPort from "get-port";
 import webHTML from "../../web/dist/index.html";
@@ -61,17 +59,9 @@ const app = new Elysia({ serve: { hostname: preferredHost } })
       methods: ["GET", "POST", "OPTIONS"],
     })
   )
+  .use(createApiApp())
   .get("/", webHTML, {
     detail: { hide: true },
-  })
-  .all("/trpc/*", async (context) => {
-    const res = await fetchRequestHandler({
-      endpoint: "/trpc",
-      router: appRouter,
-      req: context.request,
-      createContext: () => createContext({ context }),
-    });
-    return res;
   })
   .get("/demo", () => "OK", {
     detail: {

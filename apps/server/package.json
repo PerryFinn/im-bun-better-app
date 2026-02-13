@@ -12,10 +12,8 @@
   "dependencies": {
     "@elysiajs/cors": "^1.3.3",
     "@elysiajs/openapi": "^1.4.11",
-    "@elysiajs/trpc": "^1.1.0",
     "@im-debug-better-app/api": "workspace:*",
     "@im-debug-better-app/db": "workspace:*",
-    "@trpc/server": "catalog:",
     "dotenv": "catalog:",
     "elysia": "catalog:",
     "get-port": "^7.1.0",

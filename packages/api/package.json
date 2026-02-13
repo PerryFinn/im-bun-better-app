@@ -2,7 +2,7 @@
   "name": "@im-debug-better-app/api",
   "exports": {
     ".": {
-      "default": "./src/index.ts"
+      "default": "./src/app.ts"
     },
     "./*": {
       "default": "./src/*.ts"
@@ -17,12 +17,8 @@
     "typescript": "catalog:"
   },
   "dependencies": {
-    "@trpc/server": "catalog:",
-    "@trpc/client": "catalog:",
     "elysia": "catalog:",
     "drizzle-orm": "catalog:",
-    "dotenv": "catalog:",
-    "zod": "catalog:",
     "@im-debug-better-app/db": "workspace:*"
   }
 }

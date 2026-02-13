@@ -1,13 +1,13 @@
 # im-debug-better-app
 
-基于 Bun + Turborepo 的全栈 TypeScript Monorepo，前端使用 React 19 + Vite + TanStack Router，后端使用 Elysia + tRPC，数据库使用 Drizzle + SQLite。
+基于 Bun + Turborepo 的全栈 TypeScript Monorepo，前端使用 React 19 + Vite + TanStack Router，后端使用 Elysia + Eden，数据库使用 Drizzle + SQLite。
 
 ## 技术栈
 
 - Bun（运行时与包管理）
 - Turborepo（Monorepo 任务编排）
 - React 19 + Vite + TanStack Router（前端）
-- Elysia + tRPC（后端 API）
+- Elysia + Eden（后端 API）
 - Drizzle ORM + SQLite（数据层）
 - Biome + Ultracite（格式化与静态检查）
 
@@ -67,7 +67,7 @@ bun run dev
 im-debug-better-app/
 ├── apps/
 │   ├── web/         # React 19 + Vite 前端
-│   └── server/      # Elysia + tRPC 后端
+│   └── server/      # Elysia + Eden 后端
 ├── packages/
 │   ├── api/         # 前后端共享 API/router/context
 │   ├── db/          # Drizzle schema 与迁移

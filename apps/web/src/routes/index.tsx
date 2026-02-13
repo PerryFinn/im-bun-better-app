@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { trpc } from "@/utils/trpc";
+import { healthQueryOptions } from "@/utils/api-query";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
@@ -9,12 +9,12 @@ export const Route = createFileRoute("/")({
 const TITLE_TEXT = "";
 
 function HomeComponent() {
-  const healthCheck = useQuery(trpc.healthCheck.queryOptions());
+  const healthCheck = useQuery(healthQueryOptions());
 
   let statusText = "Disconnected";
   if (healthCheck.isLoading) {
     statusText = "Checking...";
-  } else if (healthCheck.data) {
+  } else if (healthCheck.data === "OK") {
     statusText = "Connected";
   }
 
