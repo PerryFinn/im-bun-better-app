@@ -1,71 +1,81 @@
 # im-debug-better-app
 
-A modern TypeScript stack that combines React, TanStack Router, Elysia, TRPC, and more.
+基于 Bun + Turborepo 的全栈 TypeScript Monorepo，前端使用 React 19 + Vite + TanStack Router，后端使用 Elysia + tRPC，数据库使用 Drizzle + SQLite。
 
-## Features
+## 技术栈
 
-- **TypeScript** - For type safety and improved developer experience
-- **TanStack Router** - File-based routing with full type safety
-- **TailwindCSS** - Utility-first CSS for rapid UI development
-- **shadcn/ui** - Reusable UI components
-- **Elysia** - Type-safe, high-performance framework
-- **tRPC** - End-to-end type-safe APIs
-- **Bun** - Runtime environment
-- **Drizzle** - TypeScript-first ORM
-- **SQLite/Turso** - Database engine
-- **Biome** - Linting and formatting
-- **Husky** - Git hooks for code quality
-- **Turborepo** - Optimized monorepo build system
+- Bun（运行时与包管理）
+- Turborepo（Monorepo 任务编排）
+- React 19 + Vite + TanStack Router（前端）
+- Elysia + tRPC（后端 API）
+- Drizzle ORM + SQLite（数据层）
+- Biome + Ultracite（格式化与静态检查）
 
-## Getting Started
+## 快速开始
 
-First, install the dependencies:
+1. 安装依赖：
 
-```bash
-bun install
-```
+    ```bash
+    bun install
+    ```
 
-## Database Setup
+2. 配置环境变量：
 
-This project uses SQLite with Drizzle ORM.
+    - 前端：创建或更新 `apps/web/.env`
 
-1. Update your `.env` file in the `apps/server` directory with the appropriate connection details if needed.
+    ```dotenv
+    VITE_SERVER_URL=http://localhost:12306
+    ```
 
-2. Apply the schema to your database:
+    - 后端：基于 `apps/server/.env.example` 创建 `apps/server/.env`，至少建议配置：
 
-```bash
-bun run -F @im-debug-better-app/db db:push
-```
+    ```dotenv
+    DB_FILE_NAME=apps/server/local.db
+    ```
 
-Then, run the development server:
+3. 启动开发环境：
 
 ```bash
 bun run dev
 ```
 
-Open [http://localhost:3001](http://localhost:3001) in your browser to see the web application.
-The API is running at [http://localhost:3000](http://localhost:3000).
+## 访问地址与端口
 
-## Project Structure
+- 前端开发地址：<http://localhost:3001>
+- 后端默认地址：<http://localhost:12306>
 
-```
+说明：后端默认优先使用 `12306` 端口；如果该端口被占用，会自动选择可用端口（由 `get-port` 实现）。
+
+## 可用命令
+
+- `bun run dev`：启动所有应用开发模式
+- `bun run dev:web`：仅启动前端
+- `bun run dev:server`：仅启动后端
+- `bun run build`：构建所有工作区
+- `bun run build:bun`：执行 Bun 打包构建脚本
+- `bun run check`：执行 Ultracite 检查
+- `bun run check:types`：执行全仓库 TypeScript 类型检查
+- `bun run verify`：当前等价于 `bun run check`
+- `bun run db:push`：将 schema 直接推送到数据库
+- `bun run db:generate`：生成 Drizzle 迁移文件
+- `bun run db:migrate`：执行 Drizzle 迁移
+- `bun run db:studio`：打开 Drizzle Studio
+
+## 项目结构
+
+```text
 im-debug-better-app/
 ├── apps/
-│   ├── web/         # Frontend application (React + TanStack Router)
-│   └── server/      # Backend API (Elysia, TRPC)
+│   ├── web/         # React 19 + Vite 前端
+│   └── server/      # Elysia + tRPC 后端
 ├── packages/
-│   ├── api/         # API layer / business logic
-│   └── db/          # Database schema & queries
+│   ├── api/         # 前后端共享 API/router/context
+│   ├── db/          # Drizzle schema 与迁移
+│   └── config/      # 共享 TypeScript 配置
+└── scripts/         # 根目录构建辅助脚本
 ```
 
-## Available Scripts
+## 数据库与进阶文档
 
-- `bun run dev`: Start all applications in development mode
-- `bun run build`: Build all applications
-- `bun run dev:web`: Start only the web application
-- `bun run dev:server`: Start only the server
-- `bun run check:types`: Check TypeScript types across all apps
-- `bun run db:push`: Push schema changes to database
-- `bun run db:studio`: Open database studio UI
-- `cd apps/server && bun run db:local`: Start the local SQLite database
-- `bun run check`: Run Biome formatting and linting
+- 数据库常用流程可通过根命令执行：`db:push`、`db:generate`、`db:migrate`、`db:studio`
+- 数据库迁移、发布升级与排障细节见：`packages/db/README.md`
