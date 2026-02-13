@@ -38,7 +38,7 @@ bun run dev:server
 
 ```dotenv
 # apps/server/.env
-DB_FILE_NAME=apps/server/local.db
+DB_FILE_NAME=./local.db
 ```
 
 命令：

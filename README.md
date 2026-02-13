@@ -30,7 +30,7 @@
     - 后端：基于 `apps/server/.env.example` 创建 `apps/server/.env`，至少建议配置：
 
     ```dotenv
-    DB_FILE_NAME=apps/server/local.db
+    DB_FILE_NAME=./local.db
     ```
 
 3. 启动开发环境：
