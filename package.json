@@ -30,7 +30,7 @@
     "check": "ultracite check",
     "fix": "ultracite fix",
     "check:types": "turbo check:types",
-    "verify": "bun run check",
+    "verify": "bun run check && bun run check:types",
     "prepare": "husky",
     "dev": "turbo dev",
     "build": "turbo build",
@@ -50,12 +50,12 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.10",
+    "@biomejs/biome": "2.4.2",
     "@types/bun": "catalog:",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
-    "turbo": "^2.8.7",
-    "ultracite": "7.1.5"
+    "turbo": "^2.8.9",
+    "ultracite": "7.2.3"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
