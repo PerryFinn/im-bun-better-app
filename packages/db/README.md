@@ -8,8 +8,9 @@
 
 这个项目的数据库运行模型是“应用启动时自动迁移”：
 
-- 应用代码在加载 `@im-debug-better-app/db` 时会执行 `initDb()`。
-- `initDb()` 会创建/连接 SQLite 文件，然后执行 `migrate(db, { migrationsFolder })`。
+- `apps/server` 在启动阶段显式调用 `createDatabase()`。
+- `createDatabase()` 会创建/连接本地 SQLite 文件，然后执行 `migrate(db, { migrationsFolder })`。
+- 仅导入 `@im-debug-better-app/db` 不会创建文件或执行迁移。
 - DB 文件路径优先取 `DB_FILE_NAME`，否则退回到可执行文件同级的 `local.db`。
 - 迁移目录优先取可执行文件同级 `db-migrations`，开发态回退到 `packages/db/db-migrations`。
 
@@ -26,7 +27,7 @@ bun run dev:server
 
 预期结果：
 
-- 启动日志中出现 `dbPath` 等数据库初始化信息。
+- 应用连接 `DB_FILE_NAME` 指向的本地 SQLite 文件。
 - 若 `db-migrations` 可用，启动阶段自动执行未应用迁移。
 - 若迁移目录缺失，启动会报错（除非显式设置 `SKIP_DB_MIGRATIONS=1`）。
 
@@ -232,7 +233,7 @@ bun run dev:server
 
 预期结果：
 
-- 日志会打印候选迁移路径；可据此确认部署包是否缺少 `db-migrations`。
+- 错误信息会列出候选迁移路径；可据此确认部署包是否缺少 `db-migrations`。
 
 修复建议：
 

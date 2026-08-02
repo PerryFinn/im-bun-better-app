@@ -1,3 +1,4 @@
+import type { Database } from "@im-debug-better-app/db";
 import { Elysia, t } from "elysia";
 import {
   createTodo,
@@ -6,13 +7,17 @@ import {
   toggleTodo,
 } from "./services/todo";
 
-export const createApiApp = () =>
+type ApiDependencies = {
+  db: Database;
+};
+
+export const createApiApp = ({ db }: ApiDependencies) =>
   new Elysia({ prefix: "/api" })
     .get("/health", () => "OK")
     .get("/todos", async function getAllTodosHandler() {
-      return await getAllTodos();
+      return await getAllTodos(db);
     })
-    .post("/todos", async ({ body }) => await createTodo(body.text), {
+    .post("/todos", async ({ body }) => await createTodo(db, body.text), {
       body: t.Object({
         text: t.String({ minLength: 1 }),
       }),
@@ -20,7 +25,7 @@ export const createApiApp = () =>
     .patch(
       "/todos/:id",
       async ({ body, params }) => ({
-        affectedRows: await toggleTodo(params.id, body.completed),
+        affectedRows: await toggleTodo(db, params.id, body.completed),
       }),
       {
         body: t.Object({
@@ -34,7 +39,7 @@ export const createApiApp = () =>
     .delete(
       "/todos/:id",
       async ({ params }) => ({
-        affectedRows: await deleteTodo(params.id),
+        affectedRows: await deleteTodo(db, params.id),
       }),
       {
         params: t.Object({

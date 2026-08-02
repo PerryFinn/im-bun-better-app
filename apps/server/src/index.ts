@@ -4,6 +4,7 @@ import { cors } from "@elysiajs/cors";
 import { openapi } from "@elysiajs/openapi";
 import { serverTiming } from "@elysiajs/server-timing";
 import { createApiApp } from "@im-debug-better-app/api";
+import { createDatabase } from "@im-debug-better-app/db";
 import { configure, getConsoleSink } from "@logtape/logtape";
 import Bun from "bun";
 import { Elysia } from "elysia";
@@ -49,6 +50,11 @@ await configure({
   },
 });
 
+const databaseConnection = await createDatabase({
+  filename: process.env.DB_FILE_NAME,
+  runMigrations: process.env.SKIP_DB_MIGRATIONS !== "1",
+});
+
 const acceptsHtml = (request: Request): boolean => {
   const accept = request.headers.get("accept");
   if (!accept) {
@@ -88,7 +94,7 @@ const app = new Elysia({ serve: { hostname: preferredHost } })
       origin: process.env.CORS_ORIGIN || "*",
     })
   )
-  .use(createApiApp())
+  .use(createApiApp({ db: databaseConnection.db }))
   .get("/", getWebIndex, {
     detail: { hide: true },
   })
@@ -133,6 +139,7 @@ const shutdown = async (signal: string) => {
   }
   isClosing = true;
   await app.stop();
+  databaseConnection.close();
   console.log(`Server is shutting down on ${signal}`);
   process.exit(0);
 };

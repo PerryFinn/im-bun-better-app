@@ -1,19 +1,17 @@
 {
   "name": "@im-debug-better-app/api",
   "exports": {
-    ".": {
-      "default": "./src/app.ts"
-    },
-    "./*": {
-      "default": "./src/*.ts"
-    }
+    ".": "./src/app.ts"
   },
+  "private": true,
   "type": "module",
-  "scripts": {},
-  "devDependencies": {
-    "@im-debug-better-app/config": "workspace:*"
+  "scripts": {
+    "check:types": "tsc --noEmit",
+    "test": "bun test tests"
   },
-  "peerDependencies": {
+  "devDependencies": {
+    "@im-debug-better-app/config": "workspace:*",
+    "@types/bun": "catalog:",
     "typescript": "catalog:"
   },
   "dependencies": {

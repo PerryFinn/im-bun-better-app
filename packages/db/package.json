@@ -1,15 +1,13 @@
 {
   "name": "@im-debug-better-app/db",
+  "private": true,
   "type": "module",
   "exports": {
-    ".": {
-      "default": "./src/index.ts"
-    },
-    "./*": {
-      "default": "./src/*.ts"
-    }
+    ".": "./src/index.ts",
+    "./schema/todo": "./src/schema/todo.ts"
   },
   "scripts": {
+    "check:types": "tsc --noEmit",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "db:generate": "drizzle-kit generate",
@@ -17,14 +15,13 @@
   },
   "devDependencies": {
     "drizzle-kit": "^0.31.10",
-    "@im-debug-better-app/config": "workspace:*"
-  },
-  "peerDependencies": {
+    "@im-debug-better-app/config": "workspace:*",
+    "@types/bun": "catalog:",
+    "dotenv": "catalog:",
     "typescript": "catalog:"
   },
   "dependencies": {
-    "dotenv": "catalog:",
     "drizzle-orm": "catalog:",
-    "zod": "catalog:"
+    "pathe": "catalog:"
   }
 }

@@ -1,4 +1,4 @@
-import { Database } from "bun:sqlite";
+import { Database as SQLiteDatabase } from "bun:sqlite";
 import { existsSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import { drizzle } from "drizzle-orm/bun-sqlite";
@@ -6,28 +6,30 @@ import { migrate } from "drizzle-orm/bun-sqlite/migrator";
 import { dirname, join, resolve } from "pathe";
 import { DEFAULT_DB_FILE_NAME, DEFAULT_DB_MIGRATIONS_DIR } from "./constants";
 
-let initPromise: Promise<ReturnType<typeof drizzle>> | null = null;
+export type Database = ReturnType<typeof drizzle>;
 
-// 由 apps/server 应用执行，所以 process.env 取的是 server 应用的 .env 文件
-const getDbPath = () =>
-  resolve(
-    process.env.DB_FILE_NAME ??
-      join(dirname(process.execPath), DEFAULT_DB_FILE_NAME)
-  );
+type CreateDatabaseOptions = {
+  filename?: string;
+  migrationsFolder?: string;
+  runMigrations?: boolean;
+};
 
-function resolveMigrationsFolder() {
-  // ✅ 路线 A：zip 发布（可执行文件同级 db-migrations/）
+export type DatabaseConnection = {
+  close: () => void;
+  db: Database;
+};
+
+const getDbPath = (filename?: string) =>
+  resolve(filename ?? join(dirname(process.execPath), DEFAULT_DB_FILE_NAME));
+
+function resolveMigrationsFolder(explicitFolder?: string) {
   const byExec = join(dirname(process.execPath), DEFAULT_DB_MIGRATIONS_DIR);
-  // ✅ Bun bundle：dist/index.js -> dist/db-migrations
   const byBundle = join(import.meta.dir, DEFAULT_DB_MIGRATIONS_DIR);
-  // ✅ 开发态：db/src -> db/db-migrations
   const bySource = resolve(import.meta.dir, "..", DEFAULT_DB_MIGRATIONS_DIR);
 
-  const candidates = [byExec, byBundle, bySource];
-
-  console.debug("process.execPath :>> ", process.execPath);
-  console.log("process.env.DB_FILE_NAME :>> ", process.env.DB_FILE_NAME);
-  console.log("candidates :>> ", candidates);
+  const candidates = explicitFolder
+    ? [resolve(explicitFolder)]
+    : [byExec, byBundle, bySource];
 
   const found = candidates.find((p) =>
     existsSync(join(p, "meta", "_journal.json"))
@@ -35,37 +37,37 @@ function resolveMigrationsFolder() {
   return { candidates, found };
 }
 
-export const initDb = () => {
-  if (initPromise) {
-    return initPromise;
-  }
+export const createDatabase = async ({
+  filename,
+  migrationsFolder,
+  runMigrations = true,
+}: CreateDatabaseOptions = {}): Promise<DatabaseConnection> => {
+  const dbPath = getDbPath(filename);
+  await mkdir(dirname(dbPath), { recursive: true });
 
-  initPromise = (async () => {
-    const dbPath = getDbPath();
-    console.log("dbPath :>> ", dbPath);
-    await mkdir(dirname(dbPath), { recursive: true });
+  const sqliteClient = new SQLiteDatabase(dbPath, { create: true });
+  const db = drizzle(sqliteClient);
 
-    const sqliteClient = new Database(dbPath, { create: true });
-    const db = drizzle(sqliteClient);
+  try {
+    if (runMigrations) {
+      const { found, candidates } = resolveMigrationsFolder(migrationsFolder);
 
-    const { found, candidates } = resolveMigrationsFolder();
-    const skip = process.env.SKIP_DB_MIGRATIONS === "1";
-
-    if (!found) {
-      if (skip) {
-        return db;
+      if (!found) {
+        throw new Error(
+          `找不到数据库迁移目录：${DEFAULT_DB_MIGRATIONS_DIR}\n` +
+            `尝试过的路径：\n${candidates.map((p) => `- ${p}`).join("\n")}`
+        );
       }
-      throw new Error(
-        `找不到数据库迁移目录：${DEFAULT_DB_MIGRATIONS_DIR}\n` +
-          `尝试过的路径：\n${candidates.map((p) => `- ${p}`).join("\n")}`
-      );
+
+      migrate(db, { migrationsFolder: found });
     }
 
-    migrate(db, { migrationsFolder: found });
-    return db;
-  })();
-
-  return initPromise;
+    return {
+      close: () => sqliteClient.close(),
+      db,
+    };
+  } catch (error) {
+    sqliteClient.close();
+    throw error;
+  }
 };
-
-export const db = await initDb();

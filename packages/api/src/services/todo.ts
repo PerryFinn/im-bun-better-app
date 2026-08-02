@@ -1,10 +1,10 @@
-import { db } from "@im-debug-better-app/db";
+import type { Database } from "@im-debug-better-app/db";
 import { todo } from "@im-debug-better-app/db/schema/todo";
 import { eq } from "drizzle-orm";
 
-export const getAllTodos = async () => await db.select().from(todo);
+export const getAllTodos = async (db: Database) => await db.select().from(todo);
 
-export const createTodo = async (text: string) => {
+export const createTodo = async (db: Database, text: string) => {
   const [createdTodo] = await db.insert(todo).values({ text }).returning();
 
   if (!createdTodo) {
@@ -14,7 +14,11 @@ export const createTodo = async (text: string) => {
   return createdTodo;
 };
 
-export const toggleTodo = async (id: number, completed: boolean) => {
+export const toggleTodo = async (
+  db: Database,
+  id: number,
+  completed: boolean
+) => {
   const updatedRows = await db
     .update(todo)
     .set({ completed })
@@ -24,7 +28,7 @@ export const toggleTodo = async (id: number, completed: boolean) => {
   return updatedRows.length;
 };
 
-export const deleteTodo = async (id: number) => {
+export const deleteTodo = async (db: Database, id: number) => {
   const deletedRows = await db
     .delete(todo)
     .where(eq(todo.id, id))

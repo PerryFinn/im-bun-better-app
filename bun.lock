@@ -5,12 +5,7 @@
     "": {
       "name": "im-debug-better-app",
       "dependencies": {
-        "@logtape/logtape": "catalog:",
-        "dotenv": "catalog:",
-        "elysia": "catalog:",
-        "file-type": "22.0.1",
-        "pathe": "^2.0.3",
-        "zod": "catalog:",
+        "pathe": "catalog:",
       },
       "devDependencies": {
         "@biomejs/biome": "2.5.6",
@@ -30,10 +25,10 @@
         "@elysiajs/server-timing": "^1.4.1",
         "@im-debug-better-app/api": "workspace:*",
         "@im-debug-better-app/db": "workspace:*",
+        "@logtape/logtape": "catalog:",
         "dotenv": "catalog:",
         "elysia": "catalog:",
         "get-port": "^7.2.0",
-        "zod": "catalog:",
       },
       "devDependencies": {
         "@im-debug-better-app/config": "workspace:*",
@@ -86,8 +81,7 @@
       },
       "devDependencies": {
         "@im-debug-better-app/config": "workspace:*",
-      },
-      "peerDependencies": {
+        "@types/bun": "catalog:",
         "typescript": "catalog:",
       },
     },
@@ -98,15 +92,14 @@
     "packages/db": {
       "name": "@im-debug-better-app/db",
       "dependencies": {
-        "dotenv": "catalog:",
         "drizzle-orm": "catalog:",
-        "zod": "catalog:",
+        "pathe": "catalog:",
       },
       "devDependencies": {
         "@im-debug-better-app/config": "workspace:*",
+        "@types/bun": "catalog:",
+        "dotenv": "catalog:",
         "drizzle-kit": "^0.31.10",
-      },
-      "peerDependencies": {
         "typescript": "catalog:",
       },
     },
@@ -122,6 +115,7 @@
     "drizzle-orm": "^0.45.2",
     "elysia": "^1.4.29",
     "lucide-react": "^1.28.0",
+    "pathe": "^2.0.3",
     "postcss": "^8.5.25",
     "react": "19.2.8",
     "react-dom": "19.2.8",
