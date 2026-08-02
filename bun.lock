@@ -111,11 +111,6 @@
       },
     },
   },
-  "overrides": {
-    "@babel/core": "7.29.7",
-    "diff": "8.0.4",
-    "picomatch": "4.0.5",
-  },
   "catalog": {
     "@elysiajs/eden": "^1.4.9",
     "@logtape/logtape": "^2.3.0",
