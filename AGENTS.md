@@ -53,3 +53,17 @@
 
 - 基于 `apps/server` 与 `apps/web` 下的 `.env.example` 创建本地环境变量，严禁提交真实密钥。
 - 在共享环境执行迁移前，先审阅生成的 SQL 迁移内容。
+
+## Agent skills
+
+### Issue tracker
+
+Issues are tracked in this repository's GitHub Issues. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Triage uses the five canonical labels without overrides. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Domain documentation uses a multi-context layout. See `docs/agents/domain.md`.
