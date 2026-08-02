@@ -7,10 +7,10 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "verbatimModuleSyntax": true,
+    "stableTypeOrdering": true,
     "skipLibCheck": true,
     "types": ["vite/client"],
     "rootDirs": ["."],
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },

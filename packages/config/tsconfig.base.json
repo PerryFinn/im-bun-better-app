@@ -7,6 +7,7 @@
     "lib": ["ESNext"],
     "verbatimModuleSyntax": true,
     "strict": true,
+    "stableTypeOrdering": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
