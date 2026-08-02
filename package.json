@@ -16,7 +16,7 @@
       "lucide-react": "^1.28.0",
       "react": "19.2.8",
       "react-dom": "19.2.8",
-      "@types/node": "^22.13.13",
+      "@types/node": "^24.13.3",
       "@types/react": "~19.2.18",
       "@types/react-dom": "^19.2.4",
       "postcss": "^8.5.25",
