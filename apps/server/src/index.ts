@@ -1,21 +1,37 @@
 import "dotenv/config";
+import { resolve, sep } from "node:path";
 import { cors } from "@elysiajs/cors";
 import { openapi } from "@elysiajs/openapi";
 import { serverTiming } from "@elysiajs/server-timing";
 import { createApiApp } from "@im-debug-better-app/api";
 import { configure, getConsoleSink } from "@logtape/logtape";
+import Bun from "bun";
 import { Elysia } from "elysia";
 import getPort from "get-port";
-import webHTML from "../../web/dist/index.html";
 import { name as pkgName } from "../package.json";
 import { appLogger } from "./utils/logger";
 
 const isDevelopment = process.env.NODE_ENV === "development";
+const webDistDir = resolve(import.meta.dir, "../../web/dist");
+const webAssetsDir = resolve(webDistDir, "assets");
+const webIndex = Bun.file(resolve(webDistDir, "index.html"));
+const getWebIndex = () => new Response(webIndex);
+
+const getWebAsset = async (assetPath: string) => {
+  const resolvedAssetPath = resolve(webAssetsDir, assetPath);
+  if (!resolvedAssetPath.startsWith(`${webAssetsDir}${sep}`)) {
+    return new Response("Not Found", { status: 404 });
+  }
+
+  const asset = Bun.file(resolvedAssetPath);
+  if (!(await asset.exists())) {
+    return new Response("Not Found", { status: 404 });
+  }
+
+  return new Response(asset);
+};
 
 await configure({
-  sinks: {
-    console: getConsoleSink(),
-  },
   loggers: [
     {
       category: [pkgName],
@@ -28,6 +44,9 @@ await configure({
       sinks: ["console"],
     },
   ],
+  sinks: {
+    console: getConsoleSink(),
+  },
 });
 
 const acceptsHtml = (request: Request): boolean => {
@@ -56,7 +75,7 @@ let isClosing = false;
 if (isDevelopment) {
   appLogger.debug(
     "OpenAPI Docs is ready on http://{preferredHost}:{port}/openapi",
-    { preferredHost, port }
+    { port, preferredHost }
   );
 }
 
@@ -65,19 +84,22 @@ const app = new Elysia({ serve: { hostname: preferredHost } })
   .use(openapi())
   .use(
     cors({
-      origin: process.env.CORS_ORIGIN || "*",
       methods: ["GET", "POST", "OPTIONS"],
+      origin: process.env.CORS_ORIGIN || "*",
     })
   )
   .use(createApiApp())
-  .get("/", webHTML, {
+  .get("/", getWebIndex, {
+    detail: { hide: true },
+  })
+  .get("/assets/*", ({ params }) => getWebAsset(params["*"]), {
     detail: { hide: true },
   })
   .get("/demo", () => "OK", {
     detail: {
-      summary: "这是操作功能的简短摘要。",
-      description: "对操作行为的详细说明。",
       deprecated: true,
+      description: "对操作行为的详细说明。",
+      summary: "这是操作功能的简短摘要。",
     },
   })
   .get("/who", () => `pid=${process.pid}`, {
@@ -93,7 +115,7 @@ const app = new Elysia({ serve: { hostname: preferredHost } })
         return new Response("Not Found", { status: 404 });
       }
 
-      return webHTML;
+      return getWebIndex();
     },
     {
       detail: { hide: true },

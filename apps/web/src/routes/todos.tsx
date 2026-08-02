@@ -1,7 +1,13 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { Loader2, Trash2 } from "lucide-react";
-import { type ReactNode, useState } from "react";
+import {
+  type ChangeEvent,
+  type FormEvent,
+  type ReactNode,
+  useCallback,
+  useState,
+} from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,6 +28,48 @@ import {
 export const Route = createFileRoute("/todos")({
   component: TodosRoute,
 });
+
+type TodoItemProps = {
+  completed: boolean;
+  id: number;
+  onDelete: (id: number) => void;
+  onToggle: (id: number, completed: boolean) => void;
+  text: string;
+};
+
+function TodoItem({ completed, id, onDelete, onToggle, text }: TodoItemProps) {
+  const handleDelete = useCallback(() => onDelete(id), [id, onDelete]);
+  const handleToggle = useCallback(
+    () => onToggle(id, completed),
+    [completed, id, onToggle]
+  );
+
+  return (
+    <li className="flex items-center justify-between rounded-md border p-2">
+      <div className="flex items-center space-x-2">
+        <Checkbox
+          checked={completed}
+          id={`todo-${id}`}
+          onCheckedChange={handleToggle}
+        />
+        <label
+          className={completed ? "line-through" : ""}
+          htmlFor={`todo-${id}`}
+        >
+          {text}
+        </label>
+      </div>
+      <Button
+        aria-label="Delete todo"
+        onClick={handleDelete}
+        size="icon"
+        variant="ghost"
+      >
+        <Trash2 className="h-4 w-4" />
+      </Button>
+    </li>
+  );
+}
 
 function TodosRoute() {
   const [newTodoText, setNewTodoText] = useState("");
@@ -47,20 +95,29 @@ function TodosRoute() {
     },
   });
 
-  const handleAddTodo = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (newTodoText.trim()) {
-      createMutation.mutate({ text: newTodoText });
-    }
-  };
-
-  const handleToggleTodo = (id: number, completed: boolean) => {
-    toggleMutation.mutate({ id, completed: !completed });
-  };
-
-  const handleDeleteTodo = (id: number) => {
-    deleteMutation.mutate({ id });
-  };
+  const handleAddTodo = useCallback(
+    (event: FormEvent) => {
+      event.preventDefault();
+      if (newTodoText.trim()) {
+        createMutation.mutate({ text: newTodoText });
+      }
+    },
+    [createMutation, newTodoText]
+  );
+  const handleDeleteTodo = useCallback(
+    (id: number) => deleteMutation.mutate({ id }),
+    [deleteMutation]
+  );
+  const handleNewTodoTextChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) =>
+      setNewTodoText(event.target.value),
+    []
+  );
+  const handleToggleTodo = useCallback(
+    (id: number, completed: boolean) =>
+      toggleMutation.mutate({ completed: !completed, id }),
+    [toggleMutation]
+  );
 
   let todoListContent: ReactNode;
   if (todos.isLoading) {
@@ -77,34 +134,14 @@ function TodosRoute() {
     todoListContent = (
       <ul className="space-y-2">
         {todos.data?.map((todo) => (
-          <li
-            className="flex items-center justify-between rounded-md border p-2"
+          <TodoItem
+            completed={todo.completed}
+            id={todo.id}
             key={todo.id}
-          >
-            <div className="flex items-center space-x-2">
-              <Checkbox
-                checked={todo.completed}
-                id={`todo-${todo.id}`}
-                onCheckedChange={() =>
-                  handleToggleTodo(todo.id, todo.completed)
-                }
-              />
-              <label
-                className={`${todo.completed ? "line-through" : ""}`}
-                htmlFor={`todo-${todo.id}`}
-              >
-                {todo.text}
-              </label>
-            </div>
-            <Button
-              aria-label="Delete todo"
-              onClick={() => handleDeleteTodo(todo.id)}
-              size="icon"
-              variant="ghost"
-            >
-              <Trash2 className="h-4 w-4" />
-            </Button>
-          </li>
+            onDelete={handleDeleteTodo}
+            onToggle={handleToggleTodo}
+            text={todo.text}
+          />
         ))}
       </ul>
     );
@@ -124,7 +161,7 @@ function TodosRoute() {
           >
             <Input
               disabled={createMutation.isPending}
-              onChange={(e) => setNewTodoText(e.target.value)}
+              onChange={handleNewTodoTextChange}
               placeholder="Add a new task..."
               value={newTodoText}
             />

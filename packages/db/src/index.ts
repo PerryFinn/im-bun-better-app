@@ -18,10 +18,12 @@ const getDbPath = () =>
 function resolveMigrationsFolder() {
   // ✅ 路线 A：zip 发布（可执行文件同级 db-migrations/）
   const byExec = join(dirname(process.execPath), DEFAULT_DB_MIGRATIONS_DIR);
+  // ✅ Bun bundle：dist/index.js -> dist/db-migrations
+  const byBundle = join(import.meta.dir, DEFAULT_DB_MIGRATIONS_DIR);
   // ✅ 开发态：db/src -> db/db-migrations
   const bySource = resolve(import.meta.dir, "..", DEFAULT_DB_MIGRATIONS_DIR);
 
-  const candidates = [byExec, bySource];
+  const candidates = [byExec, byBundle, bySource];
 
   console.debug("process.execPath :>> ", process.execPath);
   console.log("process.env.DB_FILE_NAME :>> ", process.env.DB_FILE_NAME);
@@ -30,7 +32,7 @@ function resolveMigrationsFolder() {
   const found = candidates.find((p) =>
     existsSync(join(p, "meta", "_journal.json"))
   );
-  return { found, candidates };
+  return { candidates, found };
 }
 
 export const initDb = () => {

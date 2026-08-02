@@ -7,8 +7,8 @@ import { defineConfig } from "vite";
 const webAppDir = import.meta.dirname;
 
 export default defineConfig({
-  plugins: [tailwindcss(), tanstackRouter({}), react()],
   base: "./",
+  plugins: [tailwindcss(), tanstackRouter({}), react()],
   resolve: {
     alias: {
       "@": path.resolve(webAppDir, "./src"),

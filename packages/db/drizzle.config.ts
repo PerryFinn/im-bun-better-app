@@ -15,10 +15,10 @@ const projectRoot = resolve(currentFileDir, "..", "..");
 const devDBPath = join(projectRoot, "apps", "server", DEFAULT_DB_FILE_NAME);
 
 export default defineConfig({
-  schema: "./src/schema",
-  out: "./db-migrations",
-  dialect: "sqlite",
   dbCredentials: {
     url: process.env.DB_FILE_NAME || devDBPath,
   },
+  dialect: "sqlite",
+  out: "./db-migrations",
+  schema: "./src/schema",
 });

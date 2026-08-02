@@ -19,7 +19,7 @@ const getErrorMessage = (status: unknown, value: unknown) => {
   }
 
   if (typeof value === "object" && value !== null && "message" in value) {
-    const message = value.message;
+    const { message } = value;
 
     if (typeof message === "string") {
       return message;

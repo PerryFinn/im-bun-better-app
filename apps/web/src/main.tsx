@@ -6,10 +6,10 @@ import { routeTree } from "./routeTree.gen";
 import { queryClient } from "./utils/api-client";
 
 const router = createRouter({
-  routeTree,
-  defaultPreload: "intent",
-  defaultPendingComponent: () => <Loader />,
   context: { queryClient },
+  defaultPendingComponent: () => <Loader />,
+  defaultPreload: "intent",
+  routeTree,
   Wrap({ children }: { children: React.ReactNode }) {
     return (
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>

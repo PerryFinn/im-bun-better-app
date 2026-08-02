@@ -3,26 +3,25 @@
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
-    "build": "tsdown",
+    "build": "bun run scripts/build.ts",
     "check:types": "tsc -b",
     "compile": "bun build --compile --minify --sourcemap --bytecode ./src/index.ts --outfile server",
     "dev": "NODE_ENV=development bun run --hot src/index.ts",
     "start": "NODE_ENV=production bun run dist/index.js"
   },
   "dependencies": {
-    "@elysiajs/cors": "^1.4.1",
-    "@elysiajs/openapi": "^1.4.14",
-    "@elysiajs/server-timing": "^1.4.0",
+    "@elysiajs/cors": "^1.4.2",
+    "@elysiajs/openapi": "^1.4.15",
+    "@elysiajs/server-timing": "^1.4.1",
     "@im-debug-better-app/api": "workspace:*",
     "@im-debug-better-app/db": "workspace:*",
     "dotenv": "catalog:",
     "elysia": "catalog:",
-    "get-port": "^7.1.0",
+    "get-port": "^7.2.0",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@im-debug-better-app/config": "workspace:*",
-    "tsdown": "^0.20.3",
     "typescript": "catalog:"
   }
 }

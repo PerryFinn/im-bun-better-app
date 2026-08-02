@@ -6,13 +6,13 @@ export const apiQueryKeys = {
 };
 
 export const healthQueryOptions = () => ({
-  queryKey: apiQueryKeys.health(),
   queryFn: async () => unwrapOrThrow(await apiClient.api.health.get()),
+  queryKey: apiQueryKeys.health(),
 });
 
 export const todosQueryOptions = () => ({
-  queryKey: apiQueryKeys.todos(),
   queryFn: async () => unwrapOrThrow(await apiClient.api.todos.get()),
+  queryKey: apiQueryKeys.todos(),
 });
 
 export const createTodoMutationFn = async (input: { text: string }) =>
