@@ -46,7 +46,7 @@
     "@logtape/logtape": "catalog:",
     "dotenv": "catalog:",
     "elysia": "catalog:",
-    "file-type": "21.3.4",
+    "file-type": "22.0.1",
     "pathe": "^2.0.3",
     "zod": "catalog:"
   },
@@ -54,7 +54,7 @@
     "@biomejs/biome": "2.5.6",
     "@types/bun": "catalog:",
     "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
+    "lint-staged": "^17.3.0",
     "turbo": "^2.10.8",
     "typescript": "catalog:",
     "ultracite": "7.9.4"
