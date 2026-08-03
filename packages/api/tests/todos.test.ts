@@ -7,17 +7,22 @@ import {
   type DatabaseConnection,
 } from "@im-debug-better-app/db";
 import { createApiApp } from "../src/app";
+import type { OcrClient } from "../src/services/ocr";
 
 let app: ReturnType<typeof createApiApp>;
 let databaseConnection: DatabaseConnection;
 let testDatabaseDirectory: string;
+const ocrClient: OcrClient = {
+  processFile: async () => Response.json({ status: "success" }),
+  processRemoteImage: async () => Response.json({ status: "success" }),
+};
 
 beforeEach(async () => {
   testDatabaseDirectory = await mkdtemp(join(tmpdir(), "im-bun-better-api-"));
   databaseConnection = await createDatabase({
     filename: join(testDatabaseDirectory, "test.db"),
   });
-  app = createApiApp({ db: databaseConnection.db });
+  app = createApiApp({ db: databaseConnection.db, ocrClient });
 });
 
 afterEach(async () => {
