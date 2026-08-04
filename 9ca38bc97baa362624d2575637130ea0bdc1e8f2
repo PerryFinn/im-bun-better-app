@@ -1,0 +1,53 @@
+.codex/agents/luna-worker.toml
+  8b83cfaca66895c2 1-8
+.vscode/extensions.json
+  aa956085f0df41e4 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.3",
+  "base_commit_sha": "9ca38bc97baa362624d2575637130ea0bdc1e8f2",
+  "prompts": {
+    "49c2d3a2e634bc19": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fc798-e9d3-7920-b381-ea96cd2757b6",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "PerryFinn <perryfinn@163.com>",
+      "messages": [],
+      "total_additions": 207,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/72b2e4f4d76b393978c9ce38b53e408bf76cb9c442e3935fc1ccd7bb19b98d72"
+    },
+    "8b83cfaca66895c2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fca80-97d5-7c42-affc-0a5d407a0f8b",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "PerryFinn <perryfinn@163.com>",
+      "messages": [],
+      "total_additions": 8,
+      "total_deletions": 0,
+      "accepted_lines": 8,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/023c686e369831f02a84470cd1cdf2e67a2836ffe38732d9506a325a9ab1135c"
+    },
+    "aa956085f0df41e4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fca80-b1f2-7393-8118-35c420435cb3",
+        "model": "unknown"
+      },
+      "human_author": "PerryFinn <perryfinn@163.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
