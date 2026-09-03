@@ -7,8 +7,8 @@
   },
   "scripts": {
     "check:types": "tsc --noEmit",
-    "clean": "rimraf node_modules",
     "clean:build": "rimraf dist build .tsbuildinfo",
+    "clean:node_modules": "rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "test": "bun test tests"
   },

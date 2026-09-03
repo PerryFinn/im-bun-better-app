@@ -5,8 +5,8 @@
   "scripts": {
     "build": "bun run scripts/build.ts",
     "check:types": "tsc -b",
-    "clean": "rimraf node_modules",
     "clean:build": "rimraf dist build .tsbuildinfo",
+    "clean:node_modules": "rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "compile": "bun build --compile --minify --sourcemap --bytecode ./src/index.ts --outfile server",
     "dev": "NODE_ENV=development bun run --hot src/index.ts",

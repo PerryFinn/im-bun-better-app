@@ -53,6 +53,7 @@ bun run dev
 - `bun run dev:server`：仅启动后端
 - `bun run build`：构建所有工作区
 - `bun run build:bun`：执行 Bun 打包构建脚本
+- `bun run clean:node_modules`：清理各工作区及根目录的 `node_modules`
 - `bun run clean:build`：清理各工作区及根目录的构建产物与 TypeScript 增量构建信息
 - `bun run clean:turbo`：清理各工作区及根目录的 Turborepo 缓存
 - `bun run check`：执行 Ultracite 检查
