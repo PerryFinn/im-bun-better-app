@@ -1,0 +1,50 @@
+apps/server/src/index.ts
+  1b1bfb152604e97c 11
+apps/server/scripts/build.ts
+  1b1bfb152604e97c 3
+apps/web/package.json
+  1b1bfb152604e97c 44
+apps/web/vite.config.ts
+  1b1bfb152604e97c 4
+packages/api/tests/todos.test.ts
+  1b1bfb152604e97c 8
+apps/server/package.json
+  1b1bfb152604e97c 24-25
+packages/api/package.json
+  1b1bfb152604e97c 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "998c69da723c2216d464cb84a8b18008fdbdc5e1",
+  "prompts": {
+    "1b1bfb152604e97c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a065ee-fab5-7490-b86c-d264ab7ac5d1",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "PerryFinn <perryfinn@163.com>",
+      "messages": [],
+      "total_additions": 16,
+      "total_deletions": 13,
+      "accepted_lines": 10,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/794d5f1918ab64bd6220d6f41735c0d138200c4fc105111fe26a0831d1789244"
+    },
+    "37fc682398b34420": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a065e3-ba16-7c51-86d7-a2d8cb1d9026",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "PerryFinn <perryfinn@163.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/2fd08d884e68fc380b98156261854dc549c12ec55f438b44f9086d14e9eec1b6"
+    }
+  }
+}
