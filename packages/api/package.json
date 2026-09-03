@@ -1,22 +1,22 @@
 {
   "name": "@im-debug-better-app/api",
+  "private": true,
+  "type": "module",
   "exports": {
     ".": "./src/app.ts"
   },
-  "private": true,
-  "type": "module",
   "scripts": {
     "check:types": "tsc --noEmit",
     "test": "bun test tests"
+  },
+  "dependencies": {
+    "@im-debug-better-app/db": "workspace:*",
+    "drizzle-orm": "catalog:",
+    "elysia": "catalog:"
   },
   "devDependencies": {
     "@im-debug-better-app/config": "workspace:*",
     "@types/bun": "catalog:",
     "typescript": "catalog:"
-  },
-  "dependencies": {
-    "elysia": "catalog:",
-    "drizzle-orm": "catalog:",
-    "@im-debug-better-app/db": "workspace:*"
   }
 }

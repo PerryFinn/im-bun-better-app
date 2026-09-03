@@ -1,7 +1,7 @@
 {
   "name": "server",
-  "main": "src/index.ts",
   "type": "module",
+  "main": "src/index.ts",
   "scripts": {
     "build": "bun run scripts/build.ts",
     "check:types": "tsc -b",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@elysiajs/cors": "^1.4.2",
-    "@elysiajs/openapi": "^1.4.15",
+    "@elysiajs/openapi": "^1.4.16",
     "@elysiajs/server-timing": "^1.4.1",
     "@im-debug-better-app/api": "workspace:*",
     "@im-debug-better-app/db": "workspace:*",

@@ -4,19 +4,19 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --port=3001",
     "build": "vite build",
+    "check:types": "tsc --noEmit",
+    "dev": "vite --port=3001",
     "serve": "vite preview",
-    "start": "vite",
-    "check:types": "tsc --noEmit"
+    "start": "vite"
   },
   "dependencies": {
     "@elysiajs/eden": "catalog:",
     "@im-debug-better-app/api": "workspace:*",
     "@tailwindcss/vite": "^4.3.3",
-    "@tanstack/react-form": "^1.33.3",
-    "@tanstack/react-query": "^5.101.4",
-    "@tanstack/react-router": "^1.170.18",
+    "@tanstack/react-form": "^1.33.5",
+    "@tanstack/react-query": "^5.102.8",
+    "@tanstack/react-router": "^1.170.32",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "catalog:",
@@ -24,23 +24,23 @@
     "radix-ui": "^1.6.7",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "sonner": "^2.0.5",
+    "sonner": "^2.0.8",
     "tailwind-merge": "^3.6.0",
     "tw-animate-css": "^1.2.5",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@tanstack/react-router-devtools": "^1.167.0",
-    "@tanstack/router-plugin": "^1.168.23",
+    "@im-debug-better-app/config": "workspace:*",
+    "@tanstack/react-query-devtools": "^5.102.8",
+    "@tanstack/react-router-devtools": "^1.167.1",
+    "@tanstack/router-plugin": "^1.168.35",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@vitejs/plugin-react": "^6.0.5",
+    "@vitejs/plugin-react": "^6.1.1",
     "postcss": "catalog:",
-    "typescript": "catalog:",
     "tailwindcss": "catalog:",
-    "vite": "^8.2.0",
-    "@tanstack/react-query-devtools": "^5.101.4",
-    "@im-debug-better-app/config": "workspace:*"
+    "typescript": "catalog:",
+    "vite": "^8.2.2"
   }
 }

@@ -8,20 +8,20 @@
   },
   "scripts": {
     "check:types": "tsc --noEmit",
-    "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate"
-  },
-  "devDependencies": {
-    "drizzle-kit": "^0.31.10",
-    "@im-debug-better-app/config": "workspace:*",
-    "@types/bun": "catalog:",
-    "dotenv": "catalog:",
-    "typescript": "catalog:"
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "drizzle-orm": "catalog:",
     "pathe": "catalog:"
+  },
+  "devDependencies": {
+    "@im-debug-better-app/config": "workspace:*",
+    "@types/bun": "catalog:",
+    "dotenv": "catalog:",
+    "drizzle-kit": "^0.31.10",
+    "typescript": "catalog:"
   }
 }
