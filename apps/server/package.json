@@ -21,7 +21,8 @@
     "@logtape/logtape": "catalog:",
     "dotenv": "catalog:",
     "elysia": "catalog:",
-    "get-port": "^7.2.0"
+    "get-port": "^7.2.0",
+    "pathe": "catalog:"
   },
   "devDependencies": {
     "@im-debug-better-app/config": "workspace:*",

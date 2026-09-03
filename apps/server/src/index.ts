@@ -1,5 +1,4 @@
 import "dotenv/config";
-import { resolve, sep } from "node:path";
 import { cors } from "@elysiajs/cors";
 import { openapi } from "@elysiajs/openapi";
 import { serverTiming } from "@elysiajs/server-timing";
@@ -9,6 +8,7 @@ import { configure, getConsoleSink } from "@logtape/logtape";
 import Bun from "bun";
 import { Elysia } from "elysia";
 import getPort from "get-port";
+import { resolve, sep } from "pathe";
 import { name as pkgName } from "../package.json";
 import { appLogger } from "./utils/logger";
 

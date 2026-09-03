@@ -30,6 +30,7 @@
         "dotenv": "catalog:",
         "elysia": "catalog:",
         "get-port": "^7.2.0",
+        "pathe": "catalog:",
       },
       "devDependencies": {
         "@im-debug-better-app/config": "workspace:*",
@@ -67,6 +68,7 @@
         "@types/react": "catalog:",
         "@types/react-dom": "catalog:",
         "@vitejs/plugin-react": "^6.1.1",
+        "pathe": "catalog:",
         "postcss": "catalog:",
         "tailwindcss": "catalog:",
         "typescript": "catalog:",
@@ -83,6 +85,7 @@
       "devDependencies": {
         "@im-debug-better-app/config": "workspace:*",
         "@types/bun": "catalog:",
+        "pathe": "catalog:",
         "typescript": "catalog:",
       },
     },

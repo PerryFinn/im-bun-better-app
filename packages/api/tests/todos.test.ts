@@ -1,11 +1,11 @@
 import { afterEach, beforeEach, expect, test } from "bun:test";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
 import {
   createDatabase,
   type DatabaseConnection,
 } from "@im-debug-better-app/db";
+import { join } from "pathe";
 import { createApiApp } from "../src/app";
 
 let app: ReturnType<typeof createApiApp>;

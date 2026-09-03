@@ -1,6 +1,6 @@
 import { cp, rm } from "node:fs/promises";
-import { resolve } from "node:path";
 import Bun from "bun";
+import { resolve } from "pathe";
 
 const serverDir = resolve(import.meta.dir, "..");
 const outdir = resolve(serverDir, "dist");
