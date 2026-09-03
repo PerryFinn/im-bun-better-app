@@ -7,6 +7,8 @@
     "build": "vite build",
     "check:types": "tsc --noEmit",
     "clean": "rimraf node_modules",
+    "clean:build": "rimraf dist build .tsbuildinfo",
+    "clean:turbo": "rimraf .turbo",
     "dev": "vite --port=3001",
     "serve": "vite preview",
     "start": "vite"

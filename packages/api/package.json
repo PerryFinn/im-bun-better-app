@@ -8,6 +8,8 @@
   "scripts": {
     "check:types": "tsc --noEmit",
     "clean": "rimraf node_modules",
+    "clean:build": "rimraf dist build .tsbuildinfo",
+    "clean:turbo": "rimraf .turbo",
     "test": "bun test tests"
   },
   "dependencies": {

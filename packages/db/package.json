@@ -9,6 +9,8 @@
   "scripts": {
     "check:types": "tsc --noEmit",
     "clean": "rimraf node_modules",
+    "clean:build": "rimraf dist build .tsbuildinfo",
+    "clean:turbo": "rimraf .turbo",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",

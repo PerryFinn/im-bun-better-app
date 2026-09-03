@@ -53,9 +53,11 @@ bun run dev
 - `bun run dev:server`：仅启动后端
 - `bun run build`：构建所有工作区
 - `bun run build:bun`：执行 Bun 打包构建脚本
+- `bun run clean:build`：清理各工作区及根目录的构建产物与 TypeScript 增量构建信息
+- `bun run clean:turbo`：清理各工作区及根目录的 Turborepo 缓存
 - `bun run check`：执行 Ultracite 检查
 - `bun run check:types`：执行全仓库 TypeScript 类型检查
-- `bun run verify`：当前等价于 `bun run check`
+- `bun run verify`：执行 `bun run check` 和 `bun run check:types`
 - `bun run db:push`：将 schema 直接推送到数据库
 - `bun run db:generate`：生成 Drizzle 迁移文件
 - `bun run db:migrate`：执行 Drizzle 迁移

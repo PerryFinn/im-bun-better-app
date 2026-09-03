@@ -33,6 +33,8 @@
     "check": "ultracite check",
     "check:types": "turbo check:types",
     "clean": "turbo run clean && rimraf node_modules",
+    "clean:build": "turbo run clean:build && rimraf dist build .tsbuildinfo",
+    "clean:turbo": "turbo run clean:turbo && rimraf .turbo",
     "db:generate": "turbo -F @im-debug-better-app/db db:generate",
     "db:migrate": "turbo -F @im-debug-better-app/db db:migrate",
     "db:push": "turbo -F @im-debug-better-app/db db:push",

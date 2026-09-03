@@ -19,7 +19,8 @@
       "!**/.svelte-kit",
       "!**/wrangler.jsonc",
       "!**/.source",
-      "!packages/db/db-migrations"
+      "!packages/db/db-migrations",
+      "!**/.agents"
     ]
   },
   "linter": {
