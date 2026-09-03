@@ -1,8 +1,7 @@
 {
   "name": "@im-debug-better-app/api",
   "exports": {
-    ".": "./src/app.ts",
-    "./ocr": "./src/services/ocr.ts"
+    ".": "./src/app.ts"
   },
   "private": true,
   "type": "module",
