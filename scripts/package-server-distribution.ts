@@ -1,4 +1,11 @@
 #!/usr/bin/env bun
+
+/**
+ * 组装根目录 dist 下的跨平台服务端发布产物。
+ *
+ * 除独立可执行文件外，生产环境的自动迁移还依赖同级 db-migrations，
+ * 因此这里统一清理并重建整个发布目录，避免遗漏或残留旧版本文件。
+ */
 import { cp, mkdir, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import Bun from "bun";
@@ -14,12 +21,11 @@ const err = (msg: string) => console.error(`${RED}${msg}${NC}`);
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 
-// 你原脚本的输入/输出
+// 路径锚定脚本位置，确保从仓库内任意工作目录调用都得到相同产物。
 const INPUT_FILE = resolve(SCRIPT_DIR, "../apps/server/src/index.ts");
 const OUTPUT_BASENAME = "im-debug";
 const OUTDIR = resolve(SCRIPT_DIR, "..", "dist");
 
-// 目标：macOS arm64、macOS x64、Windows x64
 const targets = [
   {
     compile: {
@@ -45,20 +51,14 @@ async function buildOne(t: (typeof targets)[number]) {
   log(BLUE, `正在构建 ${t.label}...`);
 
   const result = await Bun.build({
-    // 需要更方便本地调试可改成 "linked"
-    // sourcemap: "linked",
-
     compile: t.compile,
     entrypoints: [INPUT_FILE],
     outdir: OUTDIR,
-
-    // 你原脚本带了 --sourcemap；这里用 Bun.build 的 sourcemap 选项
-    // 可选值包括 "inline" / "external" / "linked" / "none"
+    // 外置 sourcemap 保持可执行文件精简，同时保留排查生产问题所需的映射。
     sourcemap: "external",
   });
 
   if (!result.success) {
-    // result.logs 里会有详细构建日志；直接打印更实用
     err(`构建失败：${t.label}`);
     for (const l of result.logs) {
       console.error(l);
@@ -75,6 +75,7 @@ async function build() {
   log(BLUE, "开始构建 macOS 和 Windows 版本...");
 
   try {
+    // 各目标互不依赖，并行编译可缩短完整发布构建耗时。
     await Promise.all(targets.map(buildOne));
     log(GREEN, "构建完成!");
   } catch (e) {
@@ -103,11 +104,8 @@ async function cleanDist() {
 }
 
 async function main() {
-  // 1. 清理 dist 目录
   await cleanDist();
-  // 2. 复制 db-migrations 目录
   await copyDbMigrations();
-  // 3. 构建
   await build();
 }
 

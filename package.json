@@ -29,7 +29,7 @@
   },
   "scripts": {
     "build": "turbo build",
-    "build:bun": "NODE_ENV=production bun run ./scripts/build.ts",
+    "build:bun": "NODE_ENV=production bun run ./scripts/package-server-distribution.ts",
     "check": "ultracite check",
     "check:types": "turbo check:types",
     "clean": "turbo run clean && rimraf node_modules",

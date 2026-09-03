@@ -9,7 +9,7 @@
 - `packages/api`：供前后端共享的 API/router/context 类型与逻辑。
 - `packages/db`：Drizzle 数据库 schema 与迁移文件（`packages/db/src`、`packages/db/db-migrations`）。
 - `packages/config`：共享 TypeScript 配置。
-- `scripts`：根目录构建辅助脚本（如 `scripts/build.ts`）。
+- `scripts`：根目录构建辅助脚本（如 `scripts/package-server-distribution.ts`）。
 
 ## 构建、测试与开发命令
 
