@@ -1,0 +1,22 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "e57802fd7947b524d55e5bf46cbc03c0bb572a97",
+  "prompts": {
+    "46c4f109a40a0cba": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a064f3-d5dd-7840-a9d1-476628e2654e",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "PerryFinn <perryfinn@163.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 21,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/247faf17b511f0108c8f40b7afa7c58e2d783fb551b90ad145532aa47bcc878a"
+    }
+  }
+}
