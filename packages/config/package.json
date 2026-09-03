@@ -1,5 +1,8 @@
 {
   "name": "@im-debug-better-app/config",
   "version": "0.0.0",
-  "private": true
+  "private": true,
+  "scripts": {
+    "clean": "rimraf node_modules"
+  }
 }

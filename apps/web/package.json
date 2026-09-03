@@ -6,6 +6,7 @@
   "scripts": {
     "build": "vite build",
     "check:types": "tsc --noEmit",
+    "clean": "rimraf node_modules",
     "dev": "vite --port=3001",
     "serve": "vite preview",
     "start": "vite"
