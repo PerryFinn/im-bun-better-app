@@ -1,0 +1,164 @@
+apps/web/package.json
+  46c4f109a40a0cba 10-11
+.agents/skills/elysiajs/references/cookie.md
+  a5376ab2746f585e 1-187
+README.md
+  a5376ab2746f585e 56-57,60
+.agents/skills/elysiajs/references/macro.md
+  a5376ab2746f585e 1-83
+.agents/skills/elysiajs/examples/map-response.ts
+  a5376ab2746f585e 1-15
+.agents/skills/elysiajs/examples/guard.ts
+  a5376ab2746f585e 1-34
+.agents/skills/elysiajs/examples/upload-file.ts
+  a5376ab2746f585e 1-20
+package.json
+  46c4f109a40a0cba 36-37
+.agents/skills/elysiajs/references/eden.md
+  a5376ab2746f585e 1-158
+.agents/skills/elysiajs/examples/rename.ts
+  a5376ab2746f585e 1-32
+.agents/skills/elysiajs/integrations/deno.md
+  a5376ab2746f585e 1-34
+.agents/skills/elysiajs/references/deployment.md
+  a5376ab2746f585e 1-413
+turbo.json
+  46c4f109a40a0cba 2,21-26
+.agents/skills/elysiajs/integrations/nextjs.md
+  a5376ab2746f585e 1-103
+.agents/skills/elysiajs/patterns/mvc.md
+  a5376ab2746f585e 1-380
+.agents/skills/elysiajs/plugins/bearer.md
+  a5376ab2746f585e 1-30
+.agents/skills/elysiajs/examples/complex.ts
+  a5376ab2746f585e 1-112
+.agents/skills/elysiajs/plugins/cors.md
+  a5376ab2746f585e 1-141
+.agents/skills/elysiajs/plugins/jwt.md
+  a5376ab2746f585e 1-197
+.agents/skills/elysiajs/references/lifecycle.md
+  a5376ab2746f585e 1-198
+.vscode/settings.json
+  a5376ab2746f585e 29-30
+.agents/skills/elysiajs/integrations/drizzle.md
+  a5376ab2746f585e 1-258
+.agents/skills/elysiajs/SKILL.md
+  a5376ab2746f585e 1-475
+packages/api/package.json
+  46c4f109a40a0cba 11-12
+.agents/skills/elysiajs/plugins/openapi.md
+  a5376ab2746f585e 1-246
+.agents/skills/elysiajs/integrations/tanstack-start.md
+  a5376ab2746f585e 1-87
+.agents/skills/elysiajs/examples/websocket.ts
+  a5376ab2746f585e 1-25
+.agents/skills/elysiajs/plugins/cron.md
+  a5376ab2746f585e 1-265
+.agents/skills/elysiajs/integrations/prisma.md
+  a5376ab2746f585e 1-93
+.agents/skills/elysiajs/examples/cookie.ts
+  a5376ab2746f585e 1-45
+.agents/skills/elysiajs/examples/redirect.ts
+  a5376ab2746f585e 1-6
+.agents/skills/elysiajs/plugins/server-timing.md
+  a5376ab2746f585e 1-71
+.agents/skills/elysiajs/examples/schema.ts
+  a5376ab2746f585e 1-61
+.agents/skills/elysiajs/integrations/astro.md
+  a5376ab2746f585e 1-59
+.agents/skills/elysiajs/examples/basic.ts
+  a5376ab2746f585e 1-9
+.agents/skills/elysiajs/integrations/nodejs.md
+  a5376ab2746f585e 1-64
+.agents/skills/elysiajs/plugins/opentelemetry.md
+  a5376ab2746f585e 1-167
+.agents/skills/elysiajs/examples/body-parser.ts
+  a5376ab2746f585e 1-33
+.agents/skills/elysiajs/integrations/react-email.md
+  a5376ab2746f585e 1-134
+.agents/skills/elysiajs/references/route.md
+  a5376ab2746f585e 1-331
+.agents/skills/elysiajs/integrations/cloudflare-worker.md
+  a5376ab2746f585e 1-95
+apps/server/package.json
+  46c4f109a40a0cba 9-10
+.agents/skills/elysiajs/plugins/static.md
+  a5376ab2746f585e 1-84
+.agents/skills/elysiajs/references/testing.md
+  a5376ab2746f585e 1-385
+.agents/skills/elysiajs/integrations/expo.md
+  a5376ab2746f585e 1-95
+.agents/skills/elysiajs/references/validation.md
+  a5376ab2746f585e 1-491
+biome.jsonc
+  a5376ab2746f585e 22-23
+.agents/skills/elysiajs/integrations/sveltekit.md
+  a5376ab2746f585e 1-53
+.agents/skills/elysiajs/integrations/vercel.md
+  a5376ab2746f585e 1-55
+.agents/skills/elysiajs/integrations/nuxt.md
+  a5376ab2746f585e 1-67
+.agents/skills/elysiajs/plugins/graphql-yoga.md
+  a5376ab2746f585e 1-87
+.agents/skills/elysiajs/examples/file.ts
+  a5376ab2746f585e 1-10
+skills-lock.json
+  a5376ab2746f585e 4-9
+.agents/skills/elysiajs/examples/state.ts
+  a5376ab2746f585e 1-6
+.agents/skills/elysiajs/references/bun-fullstack-dev-server.md
+  a5376ab2746f585e 1-129
+.agents/skills/elysiajs/references/plugin.md
+  a5376ab2746f585e 1-207
+.agents/skills/elysiajs/references/websocket.md
+  a5376ab2746f585e 1-250
+.agents/skills/elysiajs/plugins/html.md
+  a5376ab2746f585e 1-188
+packages/config/package.json
+  46c4f109a40a0cba 6-8
+.agents/skills/elysiajs/plugins/graphql-apollo.md
+  a5376ab2746f585e 1-90
+packages/db/package.json
+  46c4f109a40a0cba 12-13
+.agents/skills/elysiajs/integrations/better-auth.md
+  a5376ab2746f585e 1-117
+.agents/skills/elysiajs/integrations/ai-sdk.md
+  a5376ab2746f585e 1-92
+.agents/skills/elysiajs/examples/error.ts
+  a5376ab2746f585e 1-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "ecb857c531e3c70f645763de1184d8070d398580",
+  "prompts": {
+    "46c4f109a40a0cba": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a064f3-d5dd-7840-a9d1-476628e2654e",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "PerryFinn <perryfinn@163.com>",
+      "messages": [],
+      "total_additions": 20,
+      "total_deletions": 33,
+      "accepted_lines": 41,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/93f1f0ea5a6b706dd9142259b1d64f9e7cc868fec6eab7bdaac38d9fe77c2735"
+    },
+    "a5376ab2746f585e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06560-11c0-72c3-8e24-813271e12b46",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "PerryFinn <perryfinn@163.com>",
+      "messages": [],
+      "total_additions": 7598,
+      "total_deletions": 7,
+      "accepted_lines": 7593,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/c30fdde275aa1fe9a1717ff0e985816f4aa2d0522c24bf9bca966d3b3ff0b276"
+    }
+  }
+}
