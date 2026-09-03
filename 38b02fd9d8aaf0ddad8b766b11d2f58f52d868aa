@@ -1,0 +1,44 @@
+scripts/compile-server-binaries.sh
+  2b734d2fb21b3bca 3-6,9,11,19,48
+AGENTS.md
+  2b734d2fb21b3bca 12
+scripts/package-server-distribution.ts
+  2b734d2fb21b3bca 2-8,24,57,78
+package.json
+  2b734d2fb21b3bca 32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "38b02fd9d8aaf0ddad8b766b11d2f58f52d868aa",
+  "prompts": {
+    "2b734d2fb21b3bca": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a065a9-6832-7430-8e30-48ee317153f8",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "PerryFinn <perryfinn@163.com>",
+      "messages": [],
+      "total_additions": 163,
+      "total_deletions": 165,
+      "accepted_lines": 162,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/8a5ff6aec5634305da84f4e9eb1f5fac78781ea3d33c4658ecbeee586dd7bb42"
+    },
+    "a5376ab2746f585e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06560-11c0-72c3-8e24-813271e12b46",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "PerryFinn <perryfinn@163.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 475,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/88207fa40dfb4f196979904c12f52aef65eea4085fac9692dce0e69c25e1f595"
+    }
+  }
+}
