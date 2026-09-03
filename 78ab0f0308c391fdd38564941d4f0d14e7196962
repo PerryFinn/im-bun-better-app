@@ -1,0 +1,38 @@
+package.json
+  46c4f109a40a0cba 35,60,65
+.vscode/settings.json
+  46c4f109a40a0cba 40
+packages/api/package.json
+  46c4f109a40a0cba 10
+packages/config/package.json
+  46c4f109a40a0cba 4-7
+apps/web/package.json
+  46c4f109a40a0cba 9
+apps/server/package.json
+  46c4f109a40a0cba 8
+turbo.json
+  46c4f109a40a0cba 18-20
+packages/db/package.json
+  46c4f109a40a0cba 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "78ab0f0308c391fdd38564941d4f0d14e7196962",
+  "prompts": {
+    "46c4f109a40a0cba": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a064f3-d5dd-7840-a9d1-476628e2654e",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "PerryFinn <perryfinn@163.com>",
+      "messages": [],
+      "total_additions": 65,
+      "total_deletions": 31,
+      "accepted_lines": 36,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/ebe71f387373cfcf90e9497760d477e159039c2e887aff4f2841197db261f79f"
+    }
+  }
+}
