@@ -19,7 +19,8 @@
 - `bun run build`：构建所有工作区。
 - `bun run verify`：执行一键校验（等价于 `bun run check && bun run check:types`）。
 - `bun run check:types`：执行全仓库 TypeScript 类型检查。
-- `bun run check`：执行 Ultracite/Biome 格式化与 lint 修复。
+- `bun run check`：执行 Ultracite/Biome 格式与 lint 检查。
+- `bun run fix`：执行 Ultracite/Biome 格式化与 lint 自动修复。
 - `bun run db:push|db:generate|db:migrate|db:studio`：执行 `@im-debug-better-app/db` 的 Drizzle 数据库流程。
 - `cd apps/server && bun test`：运行 Bun 测试（当前测试位于 `apps/server/tests`）。
 

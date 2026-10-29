@@ -9,7 +9,9 @@
 - React 19 + Vite + TanStack Router（前端）
 - Elysia + Eden（后端 API）
 - Drizzle ORM + SQLite（数据层）
-- Biome + Ultracite（格式化与静态检查）
+- Biome 2.6.4 + Ultracite 8.1.0（格式化与静态检查）
+
+Biome 与 Ultracite 分别固定为 2.6.4 和 8.1.0，使用已适配 Biome 2.6 的预设。检查、自动修复和提交前检查均显式使用 Bun 运行 Ultracite。
 
 ## 快速开始
 
@@ -57,8 +59,9 @@ bun run dev
 - `bun run clean:build`：清理各工作区及根目录的构建产物与 TypeScript 增量构建信息
 - `bun run clean:turbo`：清理各工作区及根目录的 Turborepo 缓存
 - `bun run check`：执行 Ultracite 检查
+- `bun run fix`：执行 Ultracite 格式化与 lint 自动修复
 - `bun run check:types`：执行全仓库 TypeScript 类型检查
-- `bun run verify`：执行 `bun run check` 和 `bun run check:types`
+- `bun run verify`：依次执行 `bun run check` 和 `bun run check:types`
 - `bun run db:push`：将 schema 直接推送到数据库
 - `bun run db:generate`：生成 Drizzle 迁移文件
 - `bun run db:migrate`：执行 Drizzle 迁移
